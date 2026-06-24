@@ -13,8 +13,8 @@
 
   <style>
     :root {
-      --cream: #FAF3EA;
-      --apricot: #F5EBE0;
+      --cream: #FDF4EE;
+      --apricot: #F8E4D4;
       --terracotta-light: #C8845A;
       --terracotta-deep: #C4763A;
       --dark-brown: #3C2415;
@@ -35,7 +35,7 @@
       font-family: var(--font-body);
       color: var(--dark-brown);
       background:
-        radial-gradient(120% 90% at 50% -10%, #FFFBF5 0%, var(--cream) 46%, #F3E7D8 100%);
+        radial-gradient(120% 90% at 50% -10%, #FFFBF5 0%, var(--cream) 46%, #F6E0CE 100%);
       min-height: 100vh;
       line-height: 1.85;
       -webkit-font-smoothing: antialiased;
@@ -88,6 +88,7 @@
 
     /* 브랜드 그라데이션 라인 */
     .gradient-line {
+      position: relative;
       width: clamp(140px, 40%, 240px);
       height: 2px;
       margin: 34px auto 0;
@@ -98,6 +99,23 @@
         var(--dark-brown) 100%);
       opacity: 0;
       animation: widen 1.1s ease 0.34s forwards;
+      overflow: visible;
+    }
+
+    .gradient-line::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center,
+        rgba(253, 244, 238, 0.95) 0%,
+        rgba(253, 244, 238, 0.45) 45%,
+        transparent 75%);
+      animation: beam 3.2s ease-in-out infinite 1.5s;
     }
 
     /* ── 월별 섹션 ──────────────────────── */
@@ -224,6 +242,12 @@
     @keyframes widen {
       from { opacity: 0; transform: scaleX(0.3); }
       to   { opacity: 1; transform: scaleX(1); }
+    }
+    @keyframes beam {
+      0%   { left: -20px; opacity: 0; }
+      8%   { opacity: 1; }
+      92%  { opacity: 1; }
+      100% { left: calc(100% + 20px); opacity: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
