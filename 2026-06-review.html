@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{
-    /* 6월 테마 — 맑은 튤립 주황 */
-    --tulip:#F4793C; --tulip-deep:#D8531F; --tulip-bright:#FF7A2E;
-    --tulip-soft:#FFE3D2; --tulip-mist:#FFF1E7;
+    /* 6월 테마 — 선명한 장미 레드 (변수명은 --tulip 유지, 값만 장미로) */
+    --tulip:#E63950; --tulip-deep:#B11D36; --tulip-bright:#F24A63;
+    --tulip-soft:#FAD3DA; --tulip-mist:#FDEEF1;
     --ink:#3A2414; --ink-soft:rgba(58,36,20,.66); --ink-faint:rgba(58,36,20,.42);
     /* 비교 월 색 — 5월 맑고 글로시한 하늘(성모님) / 4월 연두 */
     --may:#45B4F2; --may-deep:#1C7CBE;
@@ -27,7 +27,7 @@
   body{
     font-family:var(--f-body);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased;
     background:
-      radial-gradient(135% 80% at 50% -8%, #FFD9A8 0%, #FF9A52 34%, #F4793C 64%, #E85C24 100%);
+      radial-gradient(135% 80% at 50% -8%, #FFD9E0 0%, #F2647C 34%, #E63950 64%, #C21F3C 100%);
     background-attachment:fixed;min-height:100vh;
   }
   .page{max-width:760px;margin:0 auto;padding:clamp(40px,8vw,76px) clamp(18px,5vw,34px) 72px}
@@ -35,12 +35,12 @@
 
   /* 헤더 */
   header{text-align:center;color:#fff;margin-bottom:40px}
-  .kicker{font-family:var(--f-sub);font-size:.78rem;letter-spacing:.4em;color:#FFE9D8;margin-bottom:16px;text-transform:uppercase}
+  .kicker{font-family:var(--f-sub);font-size:.78rem;letter-spacing:.4em;color:#FFE0E6;margin-bottom:16px;text-transform:uppercase}
   h1{font-family:var(--f-title);font-size:clamp(1.9rem,5.6vw,2.7rem);font-weight:700;line-height:1.35;text-shadow:0 2px 14px rgba(150,50,10,.28)}
   .period{display:inline-block;font-family:var(--f-sub);font-size:.82rem;background:rgba(255,255,255,.92);
     border-radius:30px;padding:5px 18px;color:var(--tulip-deep);margin-top:18px}
-  .subtitle{font-size:1rem;color:#FFF0E6;margin-top:16px}
-  .gline{width:clamp(120px,32%,190px);height:3px;margin:26px auto 0;border-radius:3px;background:linear-gradient(90deg,#FFD9A8,#fff,#FFD9A8)}
+  .subtitle{font-size:1rem;color:#FFEDF1;margin-top:16px}
+  .gline{width:clamp(120px,32%,190px);height:3px;margin:26px auto 0;border-radius:3px;background:linear-gradient(90deg,#FFD9E0,#fff,#FFD9E0)}
 
   /* 카드 공통 */
   .card{background:var(--card);border-radius:20px;padding:clamp(22px,4vw,32px);margin-bottom:22px;
@@ -116,7 +116,7 @@
 
   footer{text-align:center;color:#fff;margin-top:34px}
   .flogo{font-family:var(--f-title);font-size:1.05rem;margin-bottom:5px;text-shadow:0 2px 12px rgba(150,50,10,.3)}
-  .ftag{font-family:var(--f-body);font-size:.84rem;color:#FFEAD9}
+  .ftag{font-family:var(--f-body);font-size:.84rem;color:#FFE6EC}
   .pagenav{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
   .nav{flex:1;background:rgba(255,255,255,.92);border-radius:14px;padding:14px 18px;text-decoration:none;color:var(--ink)}
   .nav .d{font-family:var(--f-sub);font-size:.72rem;color:var(--ink-faint);margin-bottom:3px}
@@ -158,7 +158,7 @@
       <div class="ar">→</div>
       <div class="m may"><div class="mm">5월 · 하늘</div><div class="mk">신체 한계와<br/>원천 발견, 침잠</div></div>
       <div class="ar">→</div>
-      <div class="m jun"><div class="mm">6월 · 튤립</div><div class="mk">원가족 직면,<br/>수다쟁이 선언</div></div>
+      <div class="m jun"><div class="mm">6월 · 장미</div><div class="mk">원가족 직면,<br/>수다쟁이 선언</div></div>
     </div>
   </div>
 
@@ -183,14 +183,14 @@
 
   <div class="card">
     <div class="sec-head"><span class="sec-no">03</span><span class="sec-title">반복 키워드</span><span class="sec-sub">등장한 날 수 · 5월 vs 6월</span></div>
-    <p class="cap"><span style="color:var(--may-deep)">■ 5월(하늘)</span> &nbsp; <span style="color:var(--tulip-deep)">■ 6월(튤립)</span></p>
+    <p class="cap"><span style="color:var(--may-deep)">■ 5월(하늘)</span> &nbsp; <span style="color:var(--tulip-deep)">■ 6월(장미)</span></p>
     <svg id="kwChart" viewBox="0 0 920 470" role="img" aria-label="5월과 6월 키워드 등장일수 비교 막대 차트"></svg>
     <div class="insight">5월 1위였던 '건강·수면'의 자리를 6월엔 <b>'일·포근나루'(15일)가 차지</b>했어요. 선릿모닝 준비·디퍼 독립 고민이 거의 매일 글에 올라온 거예요. 새로 두드러진 건 <b>'가족·원가족'</b> — 오래된 가족의 일과 딸과의 갈등을 처음으로 길게 꺼냈어요.</div>
   </div>
 
   <div class="card">
     <div class="sec-head"><span class="sec-no">04</span><span class="sec-title">주제 비중</span><span class="sec-sub">정성 추정 · 합 100%</span></div>
-    <p class="cap"><span style="color:var(--may-deep)">5월(하늘)</span> &nbsp;→&nbsp; <span style="color:var(--tulip-deep)">6월(튤립)</span> 변화</p>
+    <p class="cap"><span style="color:var(--may-deep)">5월(하늘)</span> &nbsp;→&nbsp; <span style="color:var(--tulip-deep)">6월(장미)</span> 변화</p>
     <svg id="donutChart" viewBox="0 0 640 260" role="img" aria-label="5월과 6월 주제 비중 도넛 차트 두 개"></svg>
     <div class="lg-sq" id="donutLegend"></div>
     <div class="insight">'건강·수면'이 30%→25%로 한 걸음 내려오고, 그 자리에 <b>'일·사업'(22→24%)과 '가족·원가족'(7→15%)</b>이 올라왔어요. 5월이 '버티는 달'이었다면, 6월은 <b>일을 향한 의지와 오래된 상처를 동시에 들여다본 달</b>이에요.</div>
@@ -310,9 +310,9 @@
   var joy=[2,5,7,3,4,7,6,3,3,4,2,5,3,6,1,2,8];
   var tired=[9,4,3,7,7,4,4,6,9,5,7,5,7,4,10,8,3];
   var reflect=[5,6,6,7,8,7,5,7,6,6,6,7,8,7,3,4,8];
-  var C={joy:'#13A07C',tired:'#E85636',reflect:'#6C5CE7',may:'#45B4F2',mayd:'#1C7CBE',tulip:'#F4793C',tulipd:'#D8531F',grid:'#EEDfD3',axis:'#C8A98F',ink:'#8a7a6c'};
+  var C={joy:'#13A07C',tired:'#E85636',reflect:'#6C5CE7',may:'#45B4F2',mayd:'#1C7CBE',tulip:'#E63950',tulipd:'#B11D36',grid:'#EEDfD3',axis:'#C8A98F',ink:'#8a7a6c'};
   var mayShades=['#155E91','#1C7CBE','#2E9FE6','#45B4F2','#7BC4F2','#A9D9F7','#D6EEFC'];
-  var tulipShades=['#8F3414','#B8451C','#DD5A28','#F4793C','#FF9A5C','#FFC0A0','#FFE0CC'];
+  var tulipShades=['#7A1228','#A11C33','#C8283F','#E63950','#F2647C','#F9A3B2','#FCD7DE'];
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
   function txt(x,y,s,o){var t=el('text',Object.assign({x:x,y:y},o||{}));t.textContent=s;return t;}
@@ -372,7 +372,7 @@
   /* ---- 주제 비중 도넛 ---- */
   (function(){
     var svg=document.getElementById('donutChart');
-    /* [주제, 5월%, 6월%] — 명도는 주제 순서로 진함→연함, 색조는 월 테마(하늘/튤립) */
+    /* [주제, 5월%, 6월%] — 명도는 주제 순서로 진함→연함, 색조는 월 테마(하늘/장미) */
     var topics=[['건강·수면',30,25],['일·사업',22,24],['신앙·영성',16,12],['글쓰기·창작',12,13],['가족·원가족',7,15],['관계·사회',5,7],['독서·학습',8,4]];
     function donut(cx,cy,rO,rI,idx,shades,label){
       var total=topics.reduce(function(s,t){return s+t[idx];},0),ang=-Math.PI/2;
