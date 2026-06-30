@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<title>1월 월간 회고 · 포근나루 모닝페이지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* 1월 테마 — 새하얗게 눈부신 눈(雪)·은빛 */
+    --cur:#5487B0; --cur-deep:#2E5478; --cur-bright:#7FA8C8;
+    --cur-soft:#DCE9F3; --cur-mist:#F4F9FE;
+    --ink:#22384C; --ink-soft:rgba(34,56,76,.66); --ink-faint:rgba(34,56,76,.42);
+    --joy:#13A07C; --tired:#E85636; --reflect:#7C5CE7;
+    --card:#FFFFFF; --line:rgba(46,84,120,.15);
+    --f-title:"Gowun Batang",serif; --f-body:"Nanum Myeongjo",serif; --f-sub:"Gowun Dodum",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--f-body);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(135% 85% at 50% -10%, #FFFFFF 0%, #EDF5FC 38%, #CFE0EE 70%, #A9C4DA 100%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  .page{max-width:760px;margin:0 auto;padding:clamp(40px,8vw,76px) clamp(18px,5vw,34px) 72px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  header{text-align:center;margin-bottom:40px}
+  .kicker{font-family:var(--f-sub);font-size:.78rem;letter-spacing:.4em;color:var(--cur-deep);margin-bottom:16px;text-transform:uppercase}
+  h1{font-family:var(--f-title);font-size:clamp(1.9rem,5.6vw,2.7rem);font-weight:700;line-height:1.35;color:#1B3146;text-shadow:0 1px 10px rgba(255,255,255,.6)}
+  .period{display:inline-block;font-family:var(--f-sub);font-size:.82rem;background:#fff;border:1px solid var(--cur-soft);border-radius:30px;padding:5px 18px;color:var(--cur-deep);margin-top:18px}
+  .subtitle{font-size:1rem;color:var(--ink-soft);margin-top:16px}
+  .gline{width:clamp(120px,32%,190px);height:3px;margin:26px auto 0;border-radius:3px;background:linear-gradient(90deg,#CFE0EE,#fff,#9DBBD2)}
+  .card{background:var(--card);border-radius:20px;padding:clamp(22px,4vw,32px);margin-bottom:22px;box-shadow:0 18px 40px -22px rgba(40,70,105,.4)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .sec-no{font-family:var(--f-title);font-size:1.7rem;font-weight:700;color:var(--cur-soft);line-height:1}
+  .sec-title{font-family:var(--f-title);font-size:1.2rem;font-weight:700;color:var(--ink)}
+  .sec-sub{font-family:var(--f-sub);font-size:.76rem;color:var(--ink-faint);margin-left:auto}
+  .cap{font-family:var(--f-sub);font-size:.78rem;color:var(--ink-faint);margin:2px 0 18px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .stat{background:#fff;border:1px solid var(--cur-soft);border-radius:16px;padding:16px 12px;text-align:center}
+  .stat .v{font-family:var(--f-title);font-size:1.5rem;font-weight:700;color:var(--cur-deep);line-height:1.1}
+  .stat .l{font-family:var(--f-sub);font-size:.72rem;color:var(--ink-soft);margin-top:5px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--f-sub);font-size:.76rem;color:var(--ink-soft);margin-bottom:12px}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:22px;height:0;border-top-width:3px;border-top-style:solid;display:inline-block}
+  .lg-sq{display:flex;flex-wrap:wrap;gap:12px;font-family:var(--f-sub);font-size:.76rem;color:var(--ink-soft);margin-top:10px}
+  .lg-sq span{display:flex;align-items:center;gap:6px}
+  .lg-sq b{width:11px;height:11px;border-radius:3px;display:inline-block}
+  svg{width:100%;height:auto;display:block}
+  .insight{font-size:.95rem;color:#2a455c;background:var(--cur-mist);border-radius:12px;padding:14px 16px;margin-top:16px}
+  .insight b{color:var(--cur-deep)}
+  .seeds{display:flex;flex-direction:column;gap:14px}
+  .seed{background:var(--cur-mist);border-radius:14px;padding:18px 20px;border-left:4px solid var(--cur)}
+  .seed .q{font-size:1rem;font-style:italic;color:var(--ink);margin-bottom:8px}
+  .seed .n{font-family:var(--f-sub);font-size:.78rem;color:var(--cur-deep)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+  .chip{font-family:var(--f-sub);font-size:.74rem;background:var(--cur-mist);border:1px solid var(--line);border-radius:20px;padding:4px 12px;color:var(--cur-deep)}
+  .obs{background:var(--cur-mist);border-radius:14px;padding:18px 20px;font-size:.96rem;color:#2a455c}
+  .obs .delta{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--f-sub);font-size:.84rem;color:var(--cur-deep)}
+  .hidden{display:flex;flex-direction:column;gap:14px}
+  .hi{background:var(--cur-mist);border-radius:14px;padding:16px 20px;border-top:3px solid var(--cur);font-size:.95rem;color:#2a455c}
+  .hi b{color:var(--cur-deep)}
+  .grow{display:flex;flex-direction:column;gap:18px}
+  .gi{border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:#fbfdff}
+  .gi .gt{font-family:var(--f-title);font-weight:700;font-size:1.04rem;color:var(--cur-deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .gi .gtag{font-family:var(--f-sub);font-size:.68rem;background:var(--cur);color:#fff;border-radius:20px;padding:2px 10px;font-weight:400}
+  .gi .gq{font-size:.92rem;font-style:italic;color:var(--ink-soft);margin:8px 0 14px;padding-left:12px;border-left:2px solid var(--cur-soft)}
+  .gi .row{display:flex;gap:10px;margin-top:8px;font-size:.92rem}
+  .gi .row .k{font-family:var(--f-sub);font-size:.72rem;flex:0 0 64px;padding-top:3px;font-weight:700}
+  .gi .row.dir .k{color:var(--joy)} .gi .row.fix .k{color:var(--tired)}
+  .gi .row .t{color:#2a455c}
+  .corequote{text-align:center;padding:32px 24px;background:linear-gradient(135deg,var(--cur-mist),var(--cur-soft));border-radius:20px;position:relative}
+  .corequote::before{content:'\201C';font-family:var(--f-title);font-size:3.4rem;color:var(--cur);opacity:.35;position:absolute;top:6px;left:18px}
+  .coretext{font-family:var(--f-title);font-size:clamp(.98rem,2.6vw,1.12rem);font-weight:700;line-height:1.85;color:var(--ink)}
+  .note{font-family:var(--f-sub);font-size:.76rem;color:#fff;background:rgba(46,84,120,.82);border-radius:12px;padding:12px 16px;margin-bottom:22px;line-height:1.7}
+  footer{text-align:center;color:var(--cur-deep);margin-top:34px}
+  .flogo{font-family:var(--f-title);font-size:1.05rem;margin-bottom:5px}
+  .ftag{font-family:var(--f-body);font-size:.84rem;color:var(--ink-faint)}
+  .pagenav{display:flex;justify-content:flex-end;gap:12px;margin-top:8px}
+  .nav{flex:0 0 auto;background:#fff;border:1px solid var(--cur-soft);border-radius:14px;padding:14px 18px;text-decoration:none;color:var(--ink)}
+  .nav .d{font-family:var(--f-sub);font-size:.72rem;color:var(--ink-faint);margin-bottom:3px}
+  .nav .b{font-family:var(--f-title);font-size:.92rem;font-weight:700}
+  .nav.r{text-align:right}
+  @media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.gi .row{flex-direction:column;gap:2px}.gi .row .k{flex:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <h2 class="sr-only">2026년 1월 모닝페이지 월간 회고 — 글쓰기 시간, 감정 흐름, 키워드, 주제 비중 그래프와 글감 분석</h2>
+  <header>
+    <div class="kicker">Monthly Review · 2026</div>
+    <h1>새벽 글쓰기를 시작하고,<br/>상실 앞에서 삶을 만진 달</h1>
+    <div class="period">2026년 1월 · 기록 15일</div>
+    <p class="subtitle">줌라이팅으로 한 해를 열고,<br/>죽음을 통과하며 어른이 되어간 겨울.</p>
+    <div class="gline"></div>
+  </header>
+
+  <div class="note">글쓰기 시간·키워드 빈도는 글에 적힌 <b>실제 수치</b>이고, 감정 점수(0–10)와 주제 비중은 클로드가 글을 읽으며 매긴 <b>정성적 해석</b>이에요. 다현씨가 실제로 느낀 강도와 다를 수 있으니 흐름을 보는 참고로 봐주세요. (1월은 한 해의 첫 회고라 비교할 전월이 없어요.)</div>
+
+  <div class="stats">
+    <div class="stat"><div class="v">15일</div><div class="l">기록한 날</div></div>
+    <div class="stat"><div class="v">31분</div><div class="l">평균 글쓰기</div></div>
+    <div class="stat"><div class="v">54분</div><div class="l">최장 (1/30)</div></div>
+    <div class="stat"><div class="v">1/12</div><div class="l">줌라이팅 시작</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">01</span><span class="sec-title">감정의 흐름</span><span class="sec-sub">1/12 → 1/30</span></div>
+    <p class="cap">클로드의 정성 해석 (0–10)</p>
+    <div class="legend">
+      <span><i style="border-top-color:var(--joy)"></i>감사·기쁨 (●)</span>
+      <span><i style="border-top-color:var(--tired);border-top-style:dashed"></i>피로·소진 (▲)</span>
+      <span><i style="border-top-color:var(--reflect);border-top-style:dotted"></i>성찰·다짐 (■)</span>
+    </div>
+    <svg id="emoChart" viewBox="0 0 920 340" role="img" aria-label="1월 일별 감정 흐름 라인 차트"></svg>
+    <div class="insight">새해 의욕으로 환하게 열렸다가, 중순(1/21)에 무기력으로 한 번 가라앉아요. 그리고 <b>달의 끝, 엄마의 응급실(1/27)과 오빠의 갑작스러운 죽음(1/28·30)</b>에서 피로가 9까지 치솟아요. 그런데 가장 무거운 그 며칠에 <b>성찰 점수도 가장 높아요(8)</b> — 다현씨는 상실 앞에서 오히려 가장 깊이 자기를 들여다봤어요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">02</span><span class="sec-title">글쓰기 시간 추이</span><span class="sec-sub">단위 · 분</span></div>
+    <p class="cap">파일에 적힌 실제 시간 · 평균 31분 (시간 미기재일은 빈칸)</p>
+    <svg id="timeChart" viewBox="0 0 920 300" role="img" aria-label="1월 일별 글쓰기 시간 막대 차트"></svg>
+    <div class="insight">줌라이팅은 '20분 글쓰기'로 시작해 초반엔 20분 안팎이 많아요. 그런데 <b>1/28(47분)·1/30(54분)</b>, 오빠의 죽음과 발인을 적은 날 글이 가장 길어져요. 슬픔이 깊을수록 더 오래 머물며 썼어요 — 글쓰기가 애도의 자리가 된 거예요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">03</span><span class="sec-title">반복 키워드</span><span class="sec-sub">등장한 날 수</span></div>
+    <p class="cap">1월 15편 중 각 주제가 등장한 날 (정성 코딩)</p>
+    <svg id="kwChart" viewBox="0 0 920 470" role="img" aria-label="1월 키워드 등장일수 막대 차트"></svg>
+    <div class="insight">첫 달의 중심은 <b>'글쓰기'(13일)와 '독서·토론'(12일)</b> — 줌라이팅을 시작하고 첫 클래스(폭풍의 언덕)를 열며 매일 읽고 썼어요. 눈에 띄는 건 <b>'왜 쓰는가'</b>라는 물음이 벌써 다섯 번이나 올라온다는 점. 그리고 달 끝에 '죽음·이별'이 갑자기 들어와요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">04</span><span class="sec-title">주제 비중</span><span class="sec-sub">정성 추정 · 합 100%</span></div>
+    <p class="cap">1월 기록 전체에서 각 주제가 차지한 비율</p>
+    <svg id="donutChart" viewBox="0 0 360 260" role="img" aria-label="1월 주제 비중 도넛 차트"></svg>
+    <div class="lg-sq" id="donutLegend"></div>
+    <div class="insight"><b>'독서·학습'(24%)과 '글쓰기·창작'(22%)</b>이 절반 가까이예요 — 토론 클래스가 쏟아진 달이라서요. '가족'(15%)이 높은 건 후반의 엄마·오빠 사건 때문이고, '죽음·이별'(6%)은 1월에만 나타난 특별한 결이에요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">05</span><span class="sec-title">에세이의 씨앗 후보</span><span class="sec-sub">집필에 쓸 문장·이미지</span></div>
+    <div class="seeds">
+      <div class="seed"><div class="q">오빠는 죽었어도 나는 살아있다. 그래서 밥을 먹고, 속을 채우고, 살아있다는 감각을 느꼈다.</div><div class="n">상실 한가운데서 삶을 만지는 문장 — 1월을 관통하는 애도 에세이의 핵심</div></div>
+      <div class="seed"><div class="q">엄마가 나에게 그랬던 것처럼, 이제 나도 엄마와 딸을 보호하는 사람이 되어간다.</div><div class="n">돌봄받던 아이에서 돌보는 어른으로 — '어른이 되어간다'의 한 줄</div></div>
+      <div class="seed"><div class="q">꽁꽁 얼어붙은 계절에 맨발로 그곳을 돌아다녔다. 빨간 가죽 신발은 너무 예뻤다.</div><div class="n">통제된 세계와 금지된 자율(빨간 신발)을 그린 꿈 — 초현실 단편 소재</div></div>
+      <div class="seed"><div class="q">과거의 고통이 글쓰기의 연료가 된다. 아픔을 넣어야만 글이 나오는 건 아닐까.</div><div class="n">'왜 쓰는가'를 더듬는 자각 — 창작론 에세이</div></div>
+      <div class="seed"><div class="q">책은 연결고리다. 나와 200년 전 작가를, 나와 딸과 엄마를, 나와 낯선 독자를 이어준다.</div><div class="n">함께 읽기의 기쁨 — 이미 퇴고본이 있는 발행 직전 글감</div></div>
+      <div class="seed"><div class="q">한 사람을 이렇게 다양하게 부른다는 건 그 사람의 특징이 다양하다는 거겠지.</div><div class="n">나를 부르는 여러 이름 — 정체성을 다룬 가벼운 에세이</div></div>
+      <div class="seed"><div class="q">성격장애 종합선물세트 같은 소설. 그 안에서 유일하게 이성적인 인물의 차이는 '책'이다.</div><div class="n">폭풍의 언덕을 읽는 시선 — 독서 에세이/클래스 자료</div></div>
+      <div class="seed"><div class="q">아무것도 모를 때 가장 용감하다.</div><div class="n">글쓰기를 시작하던 마음 — 작가 성장담의 도입</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">06</span><span class="sec-title">이 달의 반복 주제어</span><span class="sec-sub">15편을 관통한 말들</span></div>
+    <div class="chips">
+      <span class="chip">줌라이팅 시작</span><span class="chip">첫 클래스 데뷔</span><span class="chip">폭풍의 언덕</span>
+      <span class="chip">왜 쓰는가</span><span class="chip">신곡·자유의지</span><span class="chip">힘내샘·글쓰기 동행</span>
+      <span class="chip">멘토에게 배우기</span><span class="chip">꿈 기록</span><span class="chip">무기력·우울</span>
+      <span class="chip">엄마의 응급실</span><span class="chip">오빠의 죽음</span><span class="chip">어른이 되어간다</span>
+      <span class="chip">고소 지연·불안</span><span class="chip">체중·건강</span><span class="chip">신앙·감사기도</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">07</span><span class="sec-title">문체 관찰</span><span class="sec-sub">첫 회고의 결</span></div>
+    <div class="obs">
+      줌라이팅으로 <b>매일 글쓰는 루틴이 자리잡은 첫 달</b>이에요. 꿈 기록이 상세하고 빈번하며(1/19·27), 글 끝마다 기도가 규칙적으로 붙어요. 독서토론에서 길어 올린 사유(자유의지·나르시시즘)가 풍부하고요. 무엇보다 후반 두 사건(엄마·오빠의 죽음)에서 문장이 길어지고 호흡이 깊어져요 — <b>상실 앞에서 다현씨의 글이 가장 진솔하고 문학적</b>이 돼요. 다현씨 글의 원점이 '상처'와 '왜 쓰는가'라는 게 드러나는 달이에요.
+      <div class="delta">↓ 한 해의 출발점: 1월에 이미 '왜 쓰는가'라는 물음이 다섯 번 떠올라요. 이 물음은 5월에 '원천 텍스트'로, 6월에 '수다쟁이 선언'으로 답을 찾아가요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">08</span><span class="sec-title">나도 몰랐던 나</span><span class="sec-sub">글에 드러난 패턴·방어</span></div>
+    <div class="hidden">
+      <div class="hi"><b>'왜 쓰는가'를 반복해 물으면서도, 정작 가장 쓰고 싶은 그 글(오래된 인간관계의 상처)은 계속 미뤄요.</b> 가장 쓰고 싶은 것이 가장 쓰기 두려운 것 — 그 두려움을 '길을 잃었다'는 말로 에둘러요.</div>
+      <div class="hi">무기력하게 게임만 한 날(1/21)엔 "우울증인지 게으름인지" 자책하는데, 바로 다음 날 엄마·오빠 사건에선 누구보다 빠르게 움직여요. <b>그 무기력은 게으름이 아니라 방향을 잃은 에너지</b>예요.</div>
+      <div class="hi">죽음 앞에서 "나는 쓸모없다, 무력하다"를 반복해요. 하지만 그건 무능이 아니라, <b>돌봄받던 아이에서 돌보는 어른으로 넘어가는 전환통</b>이에요 — 그 아픔을 본인은 '어른이 되어간다'고 정확히 이름 붙였어요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">09</span><span class="sec-title">글감으로 키우기</span><span class="sec-sub">발전 방향과 보완점</span></div>
+    <p class="cap">1월 글에서 길어 올릴 만한 글감 여섯 — 어디로 키우고, 무엇을 보완할지</p>
+    <div class="grow">
+
+      <div class="gi">
+        <div class="gt">오빠는 죽었어도 나는 살아있다 <span class="gtag">애도 에세이</span></div>
+        <div class="gq">밥을 먹고, 속을 채우고, 살아있다는 감각을 느꼈다. (1/30)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">갑작스러운 죽음 앞에서 산 사람이 밥을 먹는다는 것 — 죄책감과 생의 감각이 함께 있는 이 장면은 강력한 애도 에세이가 돼요. 발인 가는 한적한 시골길이 아름다웠다는 모순된 감정까지 담으면 더 깊어져요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">유가족(특히 조카들)의 사생활·실명은 <b>발행본에서 반드시 빼고</b>, 다현씨와 오빠의 관계·기억에만 초점을 두세요. 감정을 설명하기보다 <b>장면 하나(분수 모양 조명 장난감 같은)</b>로 보여주면 울림이 커져요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">어른이 되어간다 <span class="gtag">자전 에세이 (초안 완료)</span></div>
+        <div class="gq">엄마가 나에게 그랬던 것처럼, 이제 나도 엄마와 딸을 보호하는 사람이 되어간다. (1/27)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">이미 <b>퇴고본이 있는</b> 글감이에요. 엄마의 응급실 + 빨간 신발 꿈을 엮어 '돌봄의 세대 이동'을 그린 구조가 탄탄해요. 발행 1순위.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">꿈 해석을 AI가 설명하듯 길게 옮긴 대목은 <b>덜어내고</b>, 응급실 주차장에서 느낀 무력감 같은 실제 장면에 무게를 더 주세요. 해석보다 감각이 다현씨의 힘이에요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">빨간 신발과 맨발 <span class="gtag">초현실 단편</span></div>
+        <div class="gq">모든 행동을 통제받는 세계. 그 안에서 허락되지 않은 빨간 가죽 신발. (1/27 꿈)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">통제·집단책임·금지된 자율, 그리고 맨발의 탈출과 어린 흑룡 — 이미 한 편의 디스토피아 단편 구조예요. 모녀가 함께 도망친다는 설정이 다현씨만의 따뜻함을 더해요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">상징을 다 풀어 설명하면 김이 빠져요. <b>이미지(거꾸로 꽂힌 책, 빨간 신발, 찢어진 날개)만 남기고</b> 의미는 독자에게 맡기세요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">책은 연결고리 <span class="gtag">독서 에세이 (퇴고 완료)</span></div>
+        <div class="gq">혼자 책을 읽고 나면 늘 누군가와 나누고 싶어진다. (1/25)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">엄마·딸과 같은 책을 다르게 읽은 경험(나는 나르시시즘, 딸은 애정 결핍)이 구체적이고 좋아요. <b>이미 퇴고본이 있으니</b> 블로그·뉴스레터에 바로 쓸 수 있어요 — 포근나루의 '함께 읽기' 철학과 직결.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">'책 자랑'으로 읽히지 않게, 세 사람의 시선 차이라는 한 축에 집중하세요. 결론의 교훈조 문장을 한 번만 쓰면 더 단단해요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">아픔이 글의 연료 <span class="gtag">창작론 에세이</span></div>
+        <div class="gq">과거의 고통이 글쓰기의 연료가 된다. (1/21)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">'왜 쓰는가'를 정면으로 다루는 글. 무기력한 날의 자기 의심에서 출발해 '그럼에도 쓴다'로 가는 솔직한 창작론이 돼요. 5월 '원천 텍스트'와 한 쌍으로 읽혀요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">'고통=좋은 글'이라는 등식에 머물지 말고, <b>고통을 거리 두고 쓸 수 있게 된 지금의 변화</b>까지 보여주면 글이 자라요. 과거 인물(인간관계 상처)은 익명·추상으로.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">나를 부르는 이름들 <span class="gtag">정체성 에세이</span></div>
+        <div class="gq">다현이, 봉봉이, 햇살, 은경이… 한 사람을 다양하게 부른다는 건 그만큼 특징이 다양하다는 것. (1/16)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">『전쟁과 평화』의 여러 호칭에서 출발해 자기 이름들로 옮겨오는 흐름이 자연스럽고 사랑스러워요. 각 이름에 얽힌 사람·시절을 짧게 붙이면 가벼우면서 따뜻한 에세이가 돼요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">나열로 끝나지 않게, <b>이름 하나에 한 장면</b>씩만 붙이세요. '햇살'이라는 필명을 얻은 순간을 마지막에 두면 글이 닫혀요.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card" style="padding-top:14px;padding-bottom:14px">
+    <div class="corequote"><div class="coretext">오빠는 죽었어도 나는 살아있다. 그래서 밥을 먹고, 속을 채우고, 살아있다는 감각을 느꼈다.</div></div>
+  </div>
+
+  <div class="pagenav">
+    <a class="nav r" href="2026-04-review.html"><div class="d">다음 회고 →</div><div class="b">4월 회고</div></a>
+  </div>
+
+  <footer>
+    <div class="flogo">🛶 포근나루</div>
+    <div class="ftag">고요히, 마음에 머무는 글. — 클로드와 함께, 2026-01-30</div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var days=['1/12','1/13','1/14','1/15','1/16','1/19','1/20','1/21','1/22','1/23','1/25','1/26','1/27','1/28','1/30'];
+  var minutes=[20,20,0,20,0,20,40,20,17,42,0,38,0,47,54];
+  var joy=[7,6,4,6,5,6,5,2,4,6,7,5,5,3,4];
+  var tired=[3,3,5,3,4,3,4,7,4,4,3,4,7,8,9];
+  var reflect=[7,7,5,7,6,6,5,5,5,6,7,5,8,7,8];
+  var C={joy:'#13A07C',tired:'#E85636',reflect:'#7C5CE7',cur:'#5487B0',curd:'#2E5478',grid:'#DCE7F1',ink:'#5d7589'};
+  var curShades=['#1F3B57','#2E5478','#3E709C','#5487B0','#83A8C8','#B2CCDF','#DCE9F3'];
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function txt(x,y,s,o){var t=el('text',Object.assign({x:x,y:y},o||{}));t.textContent=s;return t;}
+
+  (function(){
+    var svg=document.getElementById('emoChart');
+    var L=44,R=904,T=24,B=276,maxV=10;
+    var x=function(i){return L+(R-L)*i/(days.length-1);};
+    var y=function(v){return B-(B-T)*v/maxV;};
+    for(var g=0;g<=10;g+=2){svg.appendChild(el('line',{x1:L,y1:y(g),x2:R,y2:y(g),stroke:C.grid,'stroke-width':1}));svg.appendChild(txt(L-8,y(g)+4,g,{'font-size':11,fill:C.ink,'text-anchor':'end','font-family':'Gowun Dodum'}));}
+    for(var i=0;i<days.length;i++){svg.appendChild(txt(x(i),340-18,days[i],{'font-size':9.5,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum'}));}
+    function poly(arr,col,dash){var pts=arr.map(function(v,i){return x(i)+','+y(v);}).join(' ');var p=el('polyline',{points:pts,fill:'none',stroke:col,'stroke-width':2.6,'stroke-linejoin':'round','stroke-linecap':'round'});if(dash)p.setAttribute('stroke-dasharray',dash);svg.appendChild(p);}
+    poly(joy,C.joy);poly(tired,C.tired,'8 5');poly(reflect,C.reflect,'2 6');
+    for(var i=0;i<days.length;i++){
+      svg.appendChild(el('circle',{cx:x(i),cy:y(joy[i]),r:3.2,fill:C.joy}));
+      var tx=x(i),ty=y(tired[i]);svg.appendChild(el('polygon',{points:tx+','+(ty-4)+' '+(tx-3.4)+','+(ty+3)+' '+(tx+3.4)+','+(ty+3),fill:C.tired}));
+      svg.appendChild(el('rect',{x:x(i)-3,y:y(reflect[i])-3,width:6,height:6,fill:C.reflect}));
+    }
+    svg.appendChild(txt(x(13),y(8)-9,'오빠의 죽음',{'font-size':10.5,fill:C.tired,'text-anchor':'middle','font-weight':700,'font-family':'Gowun Dodum'}));
+    svg.appendChild(txt(x(0),y(7)-9,'새해 시작',{'font-size':10.5,fill:C.joy,'text-anchor':'middle','font-weight':700,'font-family':'Gowun Dodum'}));
+  })();
+
+  (function(){
+    var svg=document.getElementById('timeChart');
+    var L=44,R=908,T=20,B=250,maxV=60;
+    var n=days.length,gap=(R-L)/n,bw=gap*0.58;
+    var y=function(v){return B-(B-T)*v/maxV;};
+    for(var g=0;g<=60;g+=20){svg.appendChild(el('line',{x1:L,y1:y(g),x2:R,y2:y(g),stroke:C.grid,'stroke-width':1}));svg.appendChild(txt(L-8,y(g)+4,g,{'font-size':10,fill:C.ink,'text-anchor':'end','font-family':'Gowun Dodum'}));}
+    for(var i=0;i<n;i++){
+      var cx=L+gap*i+gap/2,v=minutes[i];
+      if(v>0){
+        svg.appendChild(el('rect',{x:cx-bw/2,y:y(v),width:bw,height:B-y(v),rx:3,fill:C.cur}));
+        svg.appendChild(txt(cx,y(v)-4,v,{'font-size':8.5,fill:C.curd,'text-anchor':'middle','font-family':'Gowun Dodum'}));
+      } else {
+        svg.appendChild(txt(cx,B-6,'·',{'font-size':14,fill:C.ink,'text-anchor':'middle'}));
+      }
+      svg.appendChild(txt(cx,B+18,days[i],{'font-size':8.5,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum',transform:'rotate(-45 '+cx+' '+(B+18)+')'}));
+    }
+    svg.appendChild(el('line',{x1:L,y1:y(31),x2:R,y2:y(31),stroke:C.curd,'stroke-width':1.4,'stroke-dasharray':'4 4',opacity:.7}));
+    svg.appendChild(txt(R,y(31)-5,'평균 31분',{'font-size':10,fill:C.curd,'text-anchor':'end','font-family':'Gowun Dodum'}));
+  })();
+
+  (function(){
+    var svg=document.getElementById('kwChart');
+    var data=[['글쓰기·몽롱쓰기',13],['독서·토론',12],['신앙·기도',11],['가족',8],['멘토·관계',7],['수면·무기력',6],['왜 쓰는가·상처',5],['AI·꿈해석',5],['꿈',4],['죽음·이별',3],['돈·건강',3]];
+    var L=160,R=900,T=14,maxV=15,rowH=40,bh=17;
+    var x=function(v){return L+(R-L)*v/maxV;};
+    for(var i=0;i<data.length;i++){
+      var cy=T+rowH*i+rowH/2,d=data[i];
+      svg.appendChild(txt(L-12,cy+5,d[0],{'font-size':12.5,fill:'#2c485f','text-anchor':'end','font-family':'Gowun Dodum'}));
+      svg.appendChild(el('rect',{x:L,y:cy-bh/2,width:Math.max(x(d[1])-L,2),height:bh,rx:3,fill:C.cur}));
+      svg.appendChild(txt(x(d[1])+6,cy+5,d[1],{'font-size':11,fill:C.curd,'font-family':'Gowun Dodum'}));
+    }
+  })();
+
+  (function(){
+    var svg=document.getElementById('donutChart');
+    var topics=[['독서·학습',24],['글쓰기·창작',22],['신앙·영성',15],['가족',15],['관계·사회',10],['건강·수면',8],['죽음·이별',6]];
+    var cx=180,cy=130,rO=90,rI=52,total=100,ang=-Math.PI/2;
+    topics.forEach(function(t,k){
+      var frac=t[1]/total,a2=ang+frac*Math.PI*2,gp=0.012;
+      var aS=ang+gp,aE=a2-gp;
+      var x1=cx+rO*Math.cos(aS),y1=cy+rO*Math.sin(aS),x2=cx+rO*Math.cos(aE),y2=cy+rO*Math.sin(aE);
+      var x3=cx+rI*Math.cos(aE),y3=cy+rI*Math.sin(aE),x4=cx+rI*Math.cos(aS),y4=cy+rI*Math.sin(aS);
+      var large=(aE-aS)>Math.PI?1:0;
+      var d='M '+x1+' '+y1+' A '+rO+' '+rO+' 0 '+large+' 1 '+x2+' '+y2+' L '+x3+' '+y3+' A '+rI+' '+rI+' 0 '+large+' 0 '+x4+' '+y4+' Z';
+      svg.appendChild(el('path',{d:d,fill:curShades[k]}));
+      ang=a2;
+    });
+    svg.appendChild(txt(cx,cy-2,'1월',{'font-size':15,fill:'#22384C','text-anchor':'middle','font-weight':700,'font-family':'Gowun Batang'}));
+    svg.appendChild(txt(cx,cy+17,'주제 비중',{'font-size':9,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum'}));
+    var lg=document.getElementById('donutLegend');
+    topics.forEach(function(t,k){var s=document.createElement('span');s.innerHTML='<b style="background:'+curShades[k]+'"></b>'+t[0]+' '+t[1]+'%';lg.appendChild(s);});
+  })();
+})();
+</script>
+</body>
+</html>
