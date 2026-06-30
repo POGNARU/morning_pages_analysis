@@ -3,44 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>모닝페이지 회고 · 포근나루</title>
-  <meta name="description" content="고요한 새벽에 쓴 글을 돌아보는 자리. 포근나루 모닝페이지 회고 리포트." />
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="description" content="포근나루 모닝페이지 주간 회고 모음." />
+  <title>주간 회고 · 포근나루 모닝페이지</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --cream:#FDF4EE; --apricot:#F8E4D4;
-      --terra:#E0A172; --terra-soft:#C8845A;
-      --brown:#3C2415;
+      --cream:#FDF4EE; --terra:#E0A172;
       --ink:#F4E8DC; --ink-soft:rgba(244,232,220,.66); --ink-faint:rgba(244,232,220,.40);
-      /* 월별 테마색 */
       --apr:#9BD23E; --may:#5BC1F5; --jun:#F4843C;
       --font-title:"Gowun Batang",serif; --font-body:"Nanum Myeongjo",serif; --font-sub:"Gowun Dodum",sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      font-family:var(--font-body);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-      min-height:100vh;
+      font-family:var(--font-body);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh;
       background:
         radial-gradient(140% 70% at 50% -12%, rgba(120,74,40,.55) 0%, rgba(90,56,30,0) 52%),
         radial-gradient(125% 95% at 50% 0%, #5A3A22 0%, #3C2415 44%, #241308 100%);
       background-attachment:fixed;
     }
-    .page{max-width:720px;margin:0 auto;padding:clamp(56px,11vw,116px) clamp(22px,6vw,40px) 80px}
+    .page{max-width:720px;margin:0 auto;padding:clamp(40px,9vw,84px) clamp(22px,6vw,40px) 80px}
+    .back{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sub);font-size:.82rem;letter-spacing:.06em;color:var(--terra);text-decoration:none;margin-bottom:34px;opacity:.85;transition:opacity .3s ease}
+    .back:hover{opacity:1}
+    header{text-align:center;margin-bottom:clamp(40px,8vw,68px)}
+    .kicker{font-family:var(--font-sub);font-size:.82rem;letter-spacing:.42em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;opacity:0;animation:rise .9s ease forwards}
+    h1{font-family:var(--font-title);font-weight:700;font-size:clamp(2rem,6vw,2.8rem);line-height:1.3;margin-bottom:20px;color:var(--cream);text-shadow:0 2px 24px rgba(0,0,0,.35);opacity:0;animation:rise .9s ease .12s forwards}
+    .subtitle{font-family:var(--font-body);font-size:clamp(.96rem,2.6vw,1.06rem);color:var(--ink-soft);max-width:32ch;margin:0 auto;opacity:0;animation:rise .9s ease .24s forwards}
+    .gradient-line{width:clamp(130px,38%,210px);height:2px;margin:30px auto 0;border-radius:2px;background:linear-gradient(90deg,var(--apr) 0%,var(--may) 50%,var(--jun) 100%);opacity:0;animation:widen 1.1s ease .34s forwards}
 
-    header{text-align:center;margin-bottom:clamp(48px,9vw,80px)}
-    .kicker{font-family:var(--font-sub);font-size:.82rem;letter-spacing:.42em;text-transform:uppercase;color:var(--terra);margin-bottom:22px;opacity:0;animation:rise .9s ease forwards}
-    h1{font-family:var(--font-title);font-weight:700;font-size:clamp(2.1rem,6.5vw,3.1rem);line-height:1.3;margin-bottom:22px;color:var(--cream);text-shadow:0 2px 24px rgba(0,0,0,.35);opacity:0;animation:rise .9s ease .12s forwards}
-    .subtitle{font-family:var(--font-body);font-size:clamp(.98rem,2.6vw,1.1rem);color:var(--ink-soft);max-width:30ch;margin:0 auto;opacity:0;animation:rise .9s ease .24s forwards}
-    .gradient-line{position:relative;width:clamp(140px,40%,240px);height:2px;margin:34px auto 0;border-radius:2px;background:linear-gradient(90deg,var(--apr) 0%,var(--may) 50%,var(--jun) 100%);opacity:0;animation:widen 1.1s ease .34s forwards;overflow:visible}
-    .gradient-line::after{content:'';position:absolute;top:50%;left:-20px;transform:translateY(-50%);width:40px;height:9px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,240,224,.9) 0%,rgba(255,240,224,.4) 45%,transparent 75%);animation:beam 3.2s ease-in-out infinite 1.5s}
-
-    .month-block{margin-bottom:48px;opacity:0;animation:rise .9s ease .46s forwards}
+    .month-block{margin-bottom:46px;opacity:0;animation:rise .9s ease .46s forwards}
     .month-label{font-family:var(--font-sub);font-size:.84rem;letter-spacing:.22em;color:var(--ink-faint);padding-left:6px;margin-bottom:18px}
-
     .report-card{
       display:flex;align-items:center;gap:22px;
       background:linear-gradient(135deg, rgba(255,247,238,.085), rgba(255,247,238,.03));
@@ -57,71 +52,51 @@
     .report-desc{font-family:var(--font-sub);font-size:.86rem;color:var(--ink-soft)}
     .arrow{flex-shrink:0;font-size:1.3rem;color:var(--accent,var(--terra));transition:transform .4s cubic-bezier(.22,1,.36,1)}
     .report-card:hover .arrow{transform:translateX(5px)}
-
-    footer{text-align:center;margin-top:clamp(56px,10vw,84px);opacity:0;animation:rise .9s ease .6s forwards}
+    footer{text-align:center;margin-top:clamp(48px,9vw,72px);opacity:0;animation:rise .9s ease .6s forwards}
     .footer-logo{font-family:var(--font-title);font-weight:700;font-size:1.05rem;letter-spacing:.06em;color:var(--terra);margin-bottom:8px}
     .footer-tagline{font-family:var(--font-body);font-size:.88rem;color:var(--ink-faint)}
-
     @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     @keyframes widen{from{opacity:0;transform:scaleX(.3)}to{opacity:1;transform:scaleX(1)}}
-    @keyframes beam{0%{left:-20px;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:calc(100% + 20px);opacity:0}}
     @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;opacity:1!important}}
     @media (max-width:460px){.report-card{gap:16px;padding:20px}.date-mark{width:52px;padding-right:14px}.date-day{font-size:1.6rem}}
   </style>
 </head>
 <body>
   <main class="page">
+    <a class="back" href="index.html">← 회고 홈</a>
     <header>
-      <div class="kicker">Morning Pages</div>
-      <h1>새벽에 적어 둔 마음을<br />다시 펼쳐 보는 자리</h1>
-      <p class="subtitle">고요히 흘려보낸 문장들을 모아,<br />달마다 가만히 돌아봅니다.</p>
+      <div class="kicker">Weekly Pages</div>
+      <h1>한 주의 새벽을<br />가만히 모아 보는 자리</h1>
+      <p class="subtitle">매주, 다섯 새벽의 문장에서<br />그 주의 결을 길어 올립니다.</p>
       <div class="gradient-line"></div>
     </header>
 
     <section class="month-block">
-      <div class="month-label">주간 회고</div>
-
-      <a class="report-card" style="--accent:var(--terra)" href="weekly.html">
-        <div class="date-mark"><div class="date-day" style="font-size:1.15rem">주간</div><div class="date-month">WEEKLY</div></div>
-        <div class="report-info">
-          <div class="report-title">주간 회고 모아보기</div>
-          <div class="report-desc">매주 다섯 새벽의 문장을 돌아본 기록 — 한자리에서</div>
-        </div>
-        <div class="arrow">→</div>
-      </a>
-    </section>
-
-    <section class="month-block">
       <div class="month-label">2026 · 6월 · 튤립</div>
-      <a class="report-card" style="--accent:var(--jun)" href="2026-06-review.html">
-        <div class="date-mark"><div class="date-day">30</div><div class="date-month">JUN</div></div>
+
+      <a class="report-card" style="--accent:var(--jun)" href="2026-06-01-11-review.html">
+        <div class="date-mark"><div class="date-day">1</div><div class="date-month">JUN</div></div>
         <div class="report-info">
-          <div class="report-title">6월 월간 회고</div>
-          <div class="report-desc">침잠 속 자기 직면, 수다쟁이 문체 선언 (17편)</div>
+          <div class="report-title">쉬기로 했는데, 손이 먼저 움직였다</div>
+          <div class="report-desc">6월 첫째·둘째 주 · 나루메모 탄생, 문체 정체성, 수면박탈</div>
         </div>
         <div class="arrow">→</div>
       </a>
-    </section>
 
-    <section class="month-block">
-      <div class="month-label">2026 · 5월 · 하늘</div>
-      <a class="report-card" style="--accent:var(--may)" href="2026-05-review.html">
-        <div class="date-mark"><div class="date-day">28</div><div class="date-month">MAY</div></div>
+      <a class="report-card" style="--accent:var(--jun)" href="2026-06-20-week-review.html">
+        <div class="date-mark"><div class="date-day">20</div><div class="date-month">JUN</div></div>
         <div class="report-info">
-          <div class="report-title">5월 월간 회고</div>
-          <div class="report-desc">원천 텍스트를 발견하고, 몸의 바닥을 본 달 (16편)</div>
+          <div class="report-title">나는 무엇이 두려운 걸까</div>
+          <div class="report-desc">6월 셋째 주 · 자제력, 부채감, 독립에 대하여</div>
         </div>
         <div class="arrow">→</div>
       </a>
-    </section>
 
-    <section class="month-block">
-      <div class="month-label">2026 · 4월 · 연두</div>
-      <a class="report-card" style="--accent:var(--apr)" href="2026-04-review.html">
-        <div class="date-mark"><div class="date-day">30</div><div class="date-month">APR</div></div>
+      <a class="report-card" style="--accent:var(--jun)" href="2026-06-26-week-review.html">
+        <div class="date-mark"><div class="date-day">26</div><div class="date-month">JUN</div></div>
         <div class="report-info">
-          <div class="report-title">4월 월간 회고</div>
-          <div class="report-desc">포근나루 창업의 들뜸, 새벽 글쓰기의 시작 (20편)</div>
+          <div class="report-title">쓰는 이유를 새벽마다 다시 썼다</div>
+          <div class="report-desc">6월 넷째 주 · 소설의 씨앗, 쓰는 이유의 원점, 마르지 않는 샘</div>
         </div>
         <div class="arrow">→</div>
       </a>
