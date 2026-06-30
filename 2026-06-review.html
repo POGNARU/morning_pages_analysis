@@ -1,339 +1,400 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6월 월간 회고 · 포근나루 모닝페이지</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --cream: #FDF4EE;
-      --apricot: #F8E4D4;
-      --terracotta: #C8845A;
-      --terracotta-deep: #C4763A;
-      --dark-brown: #3C2415;
-      --brown-soft: rgba(60,36,21,0.62);
-      --brown-faint: rgba(60,36,21,0.38);
-      --font-title: "Gowun Batang", serif;
-      --font-body: "Nanum Myeongjo", serif;
-      --font-sub: "Gowun Dodum", sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      color: var(--dark-brown);
-      background: radial-gradient(120% 90% at 50% -10%, #FFFBF5 0%, var(--cream) 46%, #F6E0CE 100%);
-      min-height: 100vh;
-      line-height: 1.9;
-      -webkit-font-smoothing: antialiased;
-    }
-    .page { max-width: 720px; margin: 0 auto; padding: clamp(56px,11vw,100px) clamp(22px,6vw,40px) 80px; }
-    .nav { font-family: var(--font-sub); font-size: 0.8rem; color: var(--terracotta); letter-spacing: 0.1em; margin-bottom: 40px; }
-    .nav a { color: inherit; text-decoration: none; opacity: 0.7; }
-    .nav a:hover { opacity: 1; }
-    header { text-align: center; margin-bottom: 60px; }
-    .kicker { font-family: var(--font-sub); font-size: 0.8rem; letter-spacing: 0.42em; color: var(--terracotta-deep); margin-bottom: 18px; }
-    h1 { font-family: var(--font-title); font-size: clamp(2rem,6vw,2.8rem); font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
-    .period-tag { display: inline-block; font-family: var(--font-sub); font-size: 0.82rem; background: var(--apricot); border: 1px solid rgba(200,132,90,0.3); border-radius: 20px; padding: 5px 16px; color: var(--terracotta-deep); margin-bottom: 20px; }
-    .subtitle { font-size: 0.98rem; color: var(--brown-soft); margin: 0 auto; max-width: 30ch; }
-    .gradient-line { width: clamp(120px,36%,200px); height: 2px; margin: 28px auto 0; border-radius: 2px; background: linear-gradient(90deg, var(--apricot), var(--terracotta), var(--dark-brown)); }
-    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 52px; }
-    .stat-card { background: white; border: 1px solid rgba(200,132,90,0.18); border-radius: 16px; padding: 18px 16px; text-align: center; }
-    .stat-num { font-family: var(--font-title); font-size: 1.9rem; font-weight: 700; color: var(--terracotta); line-height: 1; margin-bottom: 6px; }
-    .stat-label { font-family: var(--font-sub); font-size: 0.76rem; color: var(--brown-soft); }
-    .section { margin-bottom: 52px; }
-    .section-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 24px; }
-    .section-num { font-family: var(--font-title); font-size: 2rem; color: var(--apricot); font-weight: 700; line-height: 1; }
-    .section-title { font-family: var(--font-title); font-size: 1.18rem; font-weight: 700; }
-    .section-sub { font-family: var(--font-sub); font-size: 0.78rem; color: var(--brown-faint); margin-left: auto; }
-    .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,132,90,0.25), transparent); margin: 52px 0; }
-    .seed-list { display: flex; flex-direction: column; gap: 18px; }
-    .seed-item { background: var(--apricot); border-radius: 14px; padding: 22px 24px; border-left: 3px solid var(--terracotta); }
-    .seed-quote { font-family: var(--font-body); font-size: 1rem; line-height: 1.85; color: var(--dark-brown); margin-bottom: 10px; font-style: italic; }
-    .seed-note { font-family: var(--font-sub); font-size: 0.78rem; color: var(--terracotta-deep); }
-    .keyword-grid { display: flex; flex-direction: column; gap: 10px; }
-    .kw-row { display: grid; grid-template-columns: 160px 1fr; gap: 12px; align-items: start; padding: 8px 0; border-bottom: 1px solid rgba(200,132,90,0.1); }
-    .kw-name { font-family: var(--font-sub); font-size: 0.84rem; color: var(--dark-brown); text-align: right; padding-top: 2px; }
-    .kw-context { font-size: 0.88rem; color: var(--brown-soft); }
-    .kw-tag { display: inline-block; background: white; border: 1px solid rgba(200,132,90,0.22); border-radius: 20px; padding: 3px 12px; font-family: var(--font-sub); font-size: 0.76rem; color: var(--terracotta-deep); margin: 3px; }
-    .style-box { background: white; border: 1px solid rgba(200,132,90,0.18); border-radius: 16px; padding: 26px 28px; font-size: 0.97rem; color: var(--dark-brown); line-height: 1.9; }
-    .style-change { margin-top: 16px; padding-top: 16px; border-top: 1px dashed rgba(200,132,90,0.25); font-family: var(--font-sub); font-size: 0.84rem; color: var(--terracotta-deep); }
-    .hidden-list { display: flex; flex-direction: column; gap: 16px; }
-    .hidden-item { background: white; border-radius: 14px; padding: 20px 22px; border-top: 2px solid var(--terracotta); font-size: 0.95rem; line-height: 1.85; color: var(--dark-brown); }
-    .core-quote { text-align: center; padding: 36px 24px; background: var(--apricot); border-radius: 20px; position: relative; }
-    .core-quote::before { content: '"'; font-family: var(--font-title); font-size: 4rem; color: var(--terracotta); opacity: 0.25; position: absolute; top: 8px; left: 20px; line-height: 1; }
-    .core-text { font-family: var(--font-title); font-size: clamp(0.97rem,2.8vw,1.1rem); line-height: 1.85; font-weight: 700; color: var(--dark-brown); }
-    /* 3달 요약 배너 */
-    .arc-box { background: white; border: 1px solid rgba(200,132,90,0.22); border-radius: 18px; padding: 28px 28px; margin-bottom: 52px; }
-    .arc-title { font-family: var(--font-title); font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--terracotta-deep); }
-    .arc-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .arc-month { text-align: center; }
-    .arc-month .am { font-family: var(--font-sub); font-size: 0.74rem; color: var(--terracotta); letter-spacing: 0.1em; margin-bottom: 6px; }
-    .arc-month .ak { font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; line-height: 1.4; }
-    .arc-arrow { display: flex; align-items: center; justify-content: center; color: var(--terracotta); font-size: 1.2rem; padding-top: 20px; }
-    .page-nav { display: flex; justify-content: space-between; margin-top: 60px; gap: 12px; }
-    .nav-btn { flex: 1; background: white; border: 1px solid rgba(200,132,90,0.22); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--dark-brown); transition: all 0.3s ease; }
-    .nav-btn:hover { border-color: var(--terracotta); box-shadow: 0 6px 20px -10px rgba(200,132,90,0.4); }
-    .nav-btn .nav-dir { font-family: var(--font-sub); font-size: 0.74rem; color: var(--brown-faint); margin-bottom: 4px; }
-    .nav-btn .nav-label { font-family: var(--font-title); font-size: 0.95rem; font-weight: 700; }
-    .nav-btn.right { text-align: right; }
-    footer { text-align: center; margin-top: 60px; }
-    .footer-logo { font-family: var(--font-title); font-size: 1rem; color: var(--terracotta-deep); margin-bottom: 6px; }
-    .footer-tagline { font-family: var(--font-body); font-size: 0.84rem; color: var(--brown-faint); }
-    @media (max-width: 500px) {
-      .stat-num { font-size: 1.5rem; }
-      .kw-row { grid-template-columns: 1fr; gap: 2px; }
-      .kw-name { text-align: left; }
-      .arc-row { grid-template-columns: 1fr; }
-      .arc-arrow { display: none; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<title>6월 월간 회고 · 포근나루 모닝페이지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* 6월 테마 — 맑은 튤립 주황 */
+    --tulip:#F4793C; --tulip-deep:#D8531F; --tulip-bright:#FF7A2E;
+    --tulip-soft:#FFE3D2; --tulip-mist:#FFF1E7;
+    --ink:#3A2414; --ink-soft:rgba(58,36,20,.66); --ink-faint:rgba(58,36,20,.42);
+    /* 비교 월 색 — 5월 맑고 글로시한 하늘(성모님) / 4월 연두 */
+    --may:#45B4F2; --may-deep:#1C7CBE;
+    --apr:#86C232;
+    /* 감정 3축 */
+    --joy:#13A07C; --tired:#E85636; --reflect:#6C5CE7;
+    --card:#FFFFFF; --line:rgba(216,83,31,.16);
+    --f-title:"Gowun Batang",serif; --f-body:"Nanum Myeongjo",serif; --f-sub:"Gowun Dodum",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--f-body);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(135% 80% at 50% -8%, #FFD9A8 0%, #FF9A52 34%, #F4793C 64%, #E85C24 100%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  .page{max-width:760px;margin:0 auto;padding:clamp(40px,8vw,76px) clamp(18px,5vw,34px) 72px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+  /* 헤더 */
+  header{text-align:center;color:#fff;margin-bottom:40px}
+  .kicker{font-family:var(--f-sub);font-size:.78rem;letter-spacing:.4em;color:#FFE9D8;margin-bottom:16px;text-transform:uppercase}
+  h1{font-family:var(--f-title);font-size:clamp(1.9rem,5.6vw,2.7rem);font-weight:700;line-height:1.35;text-shadow:0 2px 14px rgba(150,50,10,.28)}
+  .period{display:inline-block;font-family:var(--f-sub);font-size:.82rem;background:rgba(255,255,255,.92);
+    border-radius:30px;padding:5px 18px;color:var(--tulip-deep);margin-top:18px}
+  .subtitle{font-size:1rem;color:#FFF0E6;margin-top:16px}
+  .gline{width:clamp(120px,32%,190px);height:3px;margin:26px auto 0;border-radius:3px;background:linear-gradient(90deg,#FFD9A8,#fff,#FFD9A8)}
+
+  /* 카드 공통 */
+  .card{background:var(--card);border-radius:20px;padding:clamp(22px,4vw,32px);margin-bottom:22px;
+    box-shadow:0 18px 40px -22px rgba(150,55,15,.55)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .sec-no{font-family:var(--f-title);font-size:1.7rem;font-weight:700;color:var(--tulip-soft);line-height:1}
+  .sec-title{font-family:var(--f-title);font-size:1.2rem;font-weight:700;color:var(--ink)}
+  .sec-sub{font-family:var(--f-sub);font-size:.76rem;color:var(--ink-faint);margin-left:auto}
+  .cap{font-family:var(--f-sub);font-size:.78rem;color:var(--ink-faint);margin:2px 0 18px}
+
+  /* 요약 카드 */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .stat{background:rgba(255,255,255,.94);border-radius:16px;padding:16px 12px;text-align:center}
+  .stat .v{font-family:var(--f-title);font-size:1.5rem;font-weight:700;color:var(--tulip-deep);line-height:1.1}
+  .stat .l{font-family:var(--f-sub);font-size:.72rem;color:var(--ink-soft);margin-top:5px}
+
+  /* 세 달 곡선 */
+  .arc{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin-top:6px}
+  .arc .m{text-align:center;padding:12px 8px;border-radius:14px}
+  .arc .m.apr{background:#F0F7E4} .arc .m.may{background:#E7F2FC} .arc .m.jun{background:var(--tulip-mist)}
+  .arc .mm{font-family:var(--f-sub);font-size:.72rem;letter-spacing:.08em;margin-bottom:5px}
+  .arc .m.apr .mm{color:#5C8A1E} .arc .m.may .mm{color:var(--may-deep)} .arc .m.jun .mm{color:var(--tulip-deep)}
+  .arc .mk{font-family:var(--f-title);font-size:.86rem;font-weight:700;line-height:1.4}
+  .arc .ar{color:var(--tulip);font-size:1.1rem;text-align:center}
+
+  /* 범례 */
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--f-sub);font-size:.76rem;color:var(--ink-soft);margin-bottom:12px}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:22px;height:0;border-top-width:3px;border-top-style:solid;display:inline-block}
+  .lg-sq{display:flex;flex-wrap:wrap;gap:12px;font-family:var(--f-sub);font-size:.76rem;color:var(--ink-soft);margin-top:10px}
+  .lg-sq span{display:flex;align-items:center;gap:6px}
+  .lg-sq b{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  svg{width:100%;height:auto;display:block}
+
+  .insight{font-size:.95rem;color:#5a3f2c;background:var(--tulip-mist);border-radius:12px;padding:14px 16px;margin-top:16px}
+  .insight b{color:var(--tulip-deep)}
+
+  /* 씨앗 */
+  .seeds{display:flex;flex-direction:column;gap:14px}
+  .seed{background:var(--tulip-mist);border-radius:14px;padding:18px 20px;border-left:4px solid var(--tulip)}
+  .seed .q{font-size:1rem;font-style:italic;color:var(--ink);margin-bottom:8px}
+  .seed .n{font-family:var(--f-sub);font-size:.78rem;color:var(--tulip-deep)}
+
+  /* 키워드 칩 */
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+  .chip{font-family:var(--f-sub);font-size:.74rem;background:var(--tulip-mist);border:1px solid var(--line);
+    border-radius:20px;padding:4px 12px;color:var(--tulip-deep)}
+
+  /* 텍스트 분석 박스 */
+  .obs{background:var(--tulip-mist);border-radius:14px;padding:18px 20px;font-size:.96rem;color:#503827}
+  .obs .delta{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--f-sub);font-size:.84rem;color:var(--tulip-deep)}
+  .hidden{display:flex;flex-direction:column;gap:14px}
+  .hi{background:var(--tulip-mist);border-radius:14px;padding:16px 20px;border-top:3px solid var(--tulip);font-size:.95rem;color:#503827}
+  .hi b{color:var(--tulip-deep)}
+
+  /* 글감 발전 */
+  .grow{display:flex;flex-direction:column;gap:18px}
+  .gi{border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:#fffdfb}
+  .gi .gt{font-family:var(--f-title);font-weight:700;font-size:1.04rem;color:var(--tulip-deep);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .gi .gtag{font-family:var(--f-sub);font-size:.68rem;background:var(--tulip);color:#fff;border-radius:20px;padding:2px 10px;font-weight:400}
+  .gi .gq{font-size:.92rem;font-style:italic;color:var(--ink-soft);margin:8px 0 14px;padding-left:12px;border-left:2px solid var(--tulip-soft)}
+  .gi .row{display:flex;gap:10px;margin-top:8px;font-size:.92rem}
+  .gi .row .k{font-family:var(--f-sub);font-size:.72rem;flex:0 0 64px;padding-top:3px;font-weight:700}
+  .gi .row.dir .k{color:var(--joy)} .gi .row.fix .k{color:var(--tired)}
+  .gi .row .t{color:#503827}
+
+  .corequote{text-align:center;padding:32px 24px;background:linear-gradient(135deg,var(--tulip-mist),var(--tulip-soft));border-radius:20px;position:relative}
+  .corequote::before{content:'\201C';font-family:var(--f-title);font-size:3.4rem;color:var(--tulip);opacity:.3;position:absolute;top:6px;left:18px}
+  .coretext{font-family:var(--f-title);font-size:clamp(.98rem,2.6vw,1.12rem);font-weight:700;line-height:1.85;color:var(--ink)}
+
+  .note{font-family:var(--f-sub);font-size:.76rem;color:#fff;background:rgba(216,83,31,.5);border-radius:12px;padding:12px 16px;margin-bottom:22px;line-height:1.7}
+
+  footer{text-align:center;color:#fff;margin-top:34px}
+  .flogo{font-family:var(--f-title);font-size:1.05rem;margin-bottom:5px;text-shadow:0 2px 12px rgba(150,50,10,.3)}
+  .ftag{font-family:var(--f-body);font-size:.84rem;color:#FFEAD9}
+  .pagenav{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
+  .nav{flex:1;background:rgba(255,255,255,.92);border-radius:14px;padding:14px 18px;text-decoration:none;color:var(--ink)}
+  .nav .d{font-family:var(--f-sub);font-size:.72rem;color:var(--ink-faint);margin-bottom:3px}
+  .nav .b{font-family:var(--f-title);font-size:.92rem;font-weight:700}
+  .nav.r{text-align:right}
+
+  @media(max-width:520px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .arc{grid-template-columns:1fr;gap:6px}.arc .ar{display:none}
+    .gi .row{flex-direction:column;gap:2px}.gi .row .k{flex:none}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
+<main class="page">
+  <h2 class="sr-only">2026년 6월 모닝페이지 월간 회고 — 글쓰기 시간, 감정 흐름, 키워드, 주제 비중 그래프와 글감 분석</h2>
 
-    <div class="nav"><a href="index.html">← 모든 회고</a></div>
+  <header>
+    <div class="kicker">Monthly Review · 2026</div>
+    <h1>침잠 속에서<br/>처음으로 내 문체를 긍정한 달</h1>
+    <div class="period">2026년 6월 · 기록 17일</div>
+    <p class="subtitle">가장 날것의 글쓰기, 가장 깊은 자기 직면.</p>
+    <div class="gline"></div>
+  </header>
 
-    <header>
-      <div class="kicker">Monthly Review · 2026</div>
-      <h1>침잠 속에서 자기 문체를<br/>처음으로 긍정한 달</h1>
-      <div class="period-tag">2026년 6월 · 18편</div>
-      <p class="subtitle">가장 날것의 글쓰기,<br/>가장 깊은 자기 직면.</p>
-      <div class="gradient-line"></div>
-    </header>
+  <div class="note">글쓰기 시간·키워드 빈도는 글에 적힌 <b>실제 수치</b>이고, 감정 점수(0–10)와 주제 비중은 클로드가 글을 읽으며 매긴 <b>정성적 해석</b>이에요. 다현씨가 실제로 느낀 강도와 다를 수 있으니 흐름을 보는 참고로 봐주세요.</div>
 
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-num">18</div>
-        <div class="stat-label">기록한 날</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">34분</div>
-        <div class="stat-label">평균 글쓰기</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">6/30</div>
-        <div class="stat-label">문체 긍정 선언</div>
-      </div>
+  <div class="stats">
+    <div class="stat"><div class="v">17일</div><div class="l">기록한 날</div></div>
+    <div class="stat"><div class="v">31분</div><div class="l">평균 글쓰기</div></div>
+    <div class="stat"><div class="v">49분</div><div class="l">최장 (6/9)</div></div>
+    <div class="stat"><div class="v">6/30</div><div class="l">문체 긍정 선언</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">00</span><span class="sec-title">세 달의 곡선</span><span class="sec-sub">4월 → 6월</span></div>
+    <div class="arc">
+      <div class="m apr"><div class="mm">4월 · 연두</div><div class="mk">창업의 들뜸,<br/>새벽을 쌓다</div></div>
+      <div class="ar">→</div>
+      <div class="m may"><div class="mm">5월 · 하늘</div><div class="mk">신체 한계와<br/>원천 발견, 침잠</div></div>
+      <div class="ar">→</div>
+      <div class="m jun"><div class="mm">6월 · 튤립</div><div class="mk">원가족 직면,<br/>수다쟁이 선언</div></div>
     </div>
+  </div>
 
-    <!-- 3달 곡선 -->
-    <div class="arc-box">
-      <div class="arc-title">세 달의 곡선 — 4월부터 6월까지</div>
-      <div class="arc-row">
-        <div class="arc-month">
-          <div class="am">4월</div>
-          <div class="ak">창업의 들뜸,<br/>새벽을 쌓기 시작</div>
-        </div>
-        <div class="arc-month">
-          <div class="am">→</div>
-          <div class="ak" style="padding-top:8px;font-size:0.8rem;color:var(--brown-soft);">신체 한계 충돌,<br/>원천 발견</div>
-        </div>
-        <div class="arc-month">
-          <div class="am">5월</div>
-          <div class="ak">수면박탈,<br/>침잠</div>
-        </div>
-        <div class="arc-month" style="grid-column:span 1">
-          <div class="am">→</div>
-          <div class="ak" style="padding-top:8px;font-size:0.8rem;color:var(--brown-soft);">자기 직면,<br/>문체 전환</div>
-        </div>
-        <div class="arc-month">
-          <div class="am">6월</div>
-          <div class="ak">원가족 직면,<br/>수다쟁이 선언</div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">01</span><span class="sec-title">감정의 흐름</span><span class="sec-sub">6/1 → 6/30</span></div>
+    <p class="cap">클로드의 정성 해석 (0–10)</p>
+    <div class="legend">
+      <span><i style="border-top-color:var(--joy)"></i>감사·기쁨 (●)</span>
+      <span><i style="border-top-color:var(--tired);border-top-style:dashed"></i>피로·소진 (▲)</span>
+      <span><i style="border-top-color:var(--reflect);border-top-style:dotted"></i>성찰·다짐 (■)</span>
     </div>
+    <svg id="emoChart" viewBox="0 0 920 340" role="img" aria-label="6월 일별 감정 흐름 라인 차트"></svg>
+    <div class="insight">피로 곡선은 <b>6/26에 10으로 정점</b>을 찍어요 — 글이 거의 해독 불가할 만큼 수면박탈이 극심했던 날. 그런데 가장 무너진 6/18·6/24·6/26 직후마다 <b>성찰 점수가 함께 솟구쳐요.</b> 그리고 달의 마지막 6/30, 감사(8)·성찰(8)이 동시에 올라오며 '수다쟁이 선언'으로 닫혀요. 무너짐과 깨달음이 늘 붙어 다닌 한 달이에요.</div>
+  </div>
 
-    <!-- 1. 씨앗 -->
-    <div class="section">
-      <div class="section-head">
-        <div class="section-num">01</div>
-        <div class="section-title">소설의 씨앗 후보</div>
-        <div class="section-sub">소설 집필에 쓸 문장과 이미지</div>
-      </div>
-      <div class="seed-list">
-        <div class="seed-item">
-          <div class="seed-quote">느리지만 한 발 먼저 앞선 거북이와 영원히 차이가 좁혀지지 않는 아킬레스.</div>
-          <div class="seed-note">괴델·에셔·바흐를 성실함의 우화로 전유. 인물의 가치관을 신화적 이미지로 압축</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">엄마는 사회부적응자라고 했다. (…) 억지로 아니라고 부인하는 내 모습이 처량하게 느껴졌다.</div>
-          <div class="seed-note">딸의 한마디가 내면의 가장 약한 곳을 찌르는 장면 — 모녀 갈등 단편의 핵심 신</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">내 우울의 원인은 경희가 아닐지도 모른다. 경희는 단지 트리거였을 뿐이다.</div>
-          <div class="seed-note">상처의 진짜 뿌리를 더듬는 자각의 순간. 서사의 반전 구조로 쓸 수 있다</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">빠져나가고 싶어도 나갈 구멍이 보이지 않는 함정 같습니다.</div>
-          <div class="seed-note">부채감과 진심 사이에 갇힌 상태를 공간 은유로. 갈등의 정점을 그린 문장</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">서로의 자리에서 불을 밝히고 저마다의 시간을 쓰는 이들.</div>
-          <div class="seed-note">함께-혼자 쓰는 새벽의 연대를 그린 이미지 — 따뜻한 단편의 마지막 줄로 적격</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">나는 좋아서. 좋다는 그 이유 하나만으로 삶의 많은 것들을 결정했다.</div>
-          <div class="seed-note">직감으로 살아온 한 사람의 삶을 관통하는 진술. 인물 설정의 뼈대</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">예전같았으면 쓰레기로 버렸을 몽롱쓰기가. (…) 이제는 클로드가 분석해준다.</div>
-          <div class="seed-note">버려질 뻔한 말이 의미가 되는 전환 — 글쓰기와 AI를 다룬 메타적 단편의 씨앗</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">작은 옹달샘에서 시작해서 커다란 호수를 만들자.</div>
-          <div class="seed-note">창작의 샘이 마른 상태에서 길어올린 자기 다짐 — 성장 서사의 물 이미지 계열</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">내 무의식이 표현한 숫자 9와 8. 어떻게 꿈이 만들어지는 걸까?</div>
-          <div class="seed-note">버스·시험·9와 8의 꿈은 그 자체로 한 편의 초현실 단편 소재</div>
-        </div>
-        <div class="seed-item">
-          <div class="seed-quote">나는 본투비 수다쟁이인가 보다. 하나의 글 안에 여러 주제의 글을 쓰는 게 내 몽롱쓰기의 특징이니까.</div>
-          <div class="seed-note">자기 문체를 결점이 아닌 고유성으로 받아들이는 선언 — 작가 성장담의 분기점</div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">02</span><span class="sec-title">글쓰기 시간 추이</span><span class="sec-sub">단위 · 분</span></div>
+    <p class="cap">파일에 적힌 실제 시간 · 평균 31분 (5월 43분보다 짧아짐)</p>
+    <svg id="timeChart" viewBox="0 0 920 300" role="img" aria-label="6월 일별 글쓰기 시간 막대 차트"></svg>
+    <div class="insight">5월 평균 43분에서 <b>6월 31분으로 줄었어요.</b> 6/9(49분)은 꿈을 길게 해석한 날, 6/2·6/26·6/19처럼 20분 안팎인 날은 "쓸 기력조차 없다"거나 정신이 흩어진 날이에요. 시간이 짧아진 건 게으름이 아니라 <b>몸이 보낸 신호</b>로 읽혀요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">03</span><span class="sec-title">반복 키워드</span><span class="sec-sub">등장한 날 수 · 5월 vs 6월</span></div>
+    <p class="cap"><span style="color:var(--may-deep)">■ 5월(하늘)</span> &nbsp; <span style="color:var(--tulip-deep)">■ 6월(튤립)</span></p>
+    <svg id="kwChart" viewBox="0 0 920 470" role="img" aria-label="5월과 6월 키워드 등장일수 비교 막대 차트"></svg>
+    <div class="insight">5월 1위였던 '건강·수면'의 자리를 6월엔 <b>'일·포근나루'(15일)가 차지</b>했어요. 선릿모닝 준비·디퍼 독립 고민이 거의 매일 글에 올라온 거예요. 새로 두드러진 건 <b>'가족·원가족'</b> — 오래된 가족의 일과 딸과의 갈등을 처음으로 길게 꺼냈어요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">04</span><span class="sec-title">주제 비중</span><span class="sec-sub">정성 추정 · 합 100%</span></div>
+    <p class="cap"><span style="color:var(--may-deep)">5월(하늘)</span> &nbsp;→&nbsp; <span style="color:var(--tulip-deep)">6월(튤립)</span> 변화</p>
+    <svg id="donutChart" viewBox="0 0 640 260" role="img" aria-label="5월과 6월 주제 비중 도넛 차트 두 개"></svg>
+    <div class="lg-sq" id="donutLegend"></div>
+    <div class="insight">'건강·수면'이 30%→25%로 한 걸음 내려오고, 그 자리에 <b>'일·사업'(22→24%)과 '가족·원가족'(7→15%)</b>이 올라왔어요. 5월이 '버티는 달'이었다면, 6월은 <b>일을 향한 의지와 오래된 상처를 동시에 들여다본 달</b>이에요.</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">05</span><span class="sec-title">소설의 씨앗 후보</span><span class="sec-sub">집필에 쓸 문장·이미지</span></div>
+    <div class="seeds">
+      <div class="seed"><div class="q">느리지만 한 발 먼저 앞선 거북이와, 영원히 차이가 좁혀지지 않는 아킬레스.</div><div class="n">괴델·에셔·바흐를 성실함의 우화로 전유 — 인물의 가치관을 신화적 이미지로 압축</div></div>
+      <div class="seed"><div class="q">억지로 아니라고 부인하는 내 모습이 처량하게 느껴졌다.</div><div class="n">딸의 '사회부적응자' 한마디가 내면의 가장 약한 곳을 찌르는 장면 — 모녀 단편의 핵심 신</div></div>
+      <div class="seed"><div class="q">내 우울의 원인은 그 사람가 아닐지도 모른다. 그 사람는 단지 트리거였을 뿐이다.</div><div class="n">상처의 진짜 뿌리를 더듬는 자각 — 서사의 반전 구조로 쓸 수 있다</div></div>
+      <div class="seed"><div class="q">빠져나가고 싶어도 나갈 구멍이 보이지 않는 함정 같습니다.</div><div class="n">부채감과 진심 사이에 갇힌 상태를 공간 은유로 — 갈등의 정점을 그린 문장</div></div>
+      <div class="seed"><div class="q">서로의 자리에서 불을 밝히고 저마다의 시간을 쓰는 이들.</div><div class="n">함께-혼자 쓰는 새벽의 연대 — 따뜻한 단편의 마지막 줄로 적격</div></div>
+      <div class="seed"><div class="q">나는 좋아서. 좋다는 그 이유 하나만으로 삶의 많은 것들을 결정했다.</div><div class="n">직감으로 살아온 한 사람을 관통하는 진술 — 인물 설정의 뼈대</div></div>
+      <div class="seed"><div class="q">예전 같았으면 쓰레기로 버렸을 몽롱쓰기를, 이제는 클로드가 분석해준다.</div><div class="n">버려질 뻔한 말이 의미가 되는 전환 — 글쓰기와 AI를 다룬 메타 단편의 씨앗</div></div>
+      <div class="seed"><div class="q">내 무의식이 표현한 숫자 9와 8. 어떻게 꿈이 만들어지는 걸까?</div><div class="n">버스·시험·9와 8의 꿈은 그 자체로 한 편의 초현실 단편 소재</div></div>
     </div>
+  </div>
 
-    <div class="divider"></div>
-
-    <!-- 2. 키워드 -->
-    <div class="section">
-      <div class="section-head">
-        <div class="section-num">02</div>
-        <div class="section-title">이 달의 반복 키워드</div>
-        <div class="section-sub">18편을 관통한 주제어</div>
-      </div>
-      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
-        <span class="kw-tag">수면박탈 자초</span>
-        <span class="kw-tag">자제력·충동</span>
-        <span class="kw-tag">포근나루 독립 vs 디퍼</span>
-        <span class="kw-tag">별지기·어린왕자</span>
-        <span class="kw-tag">AI 의존·직관 퇴화</span>
-        <span class="kw-tag">바다·식구들</span>
-        <span class="kw-tag">문체 정립</span>
-        <span class="kw-tag">선릿모닝 신청 제로</span>
-        <span class="kw-tag">이루미 방치감</span>
-        <span class="kw-tag">엄마의 비밀·원가족</span>
-        <span class="kw-tag">우울증 재발</span>
-        <span class="kw-tag">성실함·거북이</span>
-        <span class="kw-tag">소설·SF 단편</span>
-        <span class="kw-tag">신앙과 멀어짐</span>
-        <span class="kw-tag">야훼 이레·맡김</span>
-        <span class="kw-tag">꿈의 감각성</span>
-        <span class="kw-tag">캄보디아·소외</span>
-        <span class="kw-tag">원빈·응원과 서운함</span>
-      </div>
-      <div class="keyword-grid">
-        <div class="kw-row">
-          <span class="kw-name">수면박탈 자초</span>
-          <span class="kw-context">도파민·드라마·작업으로 잠을 미루는 자제력 문제로 명명</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">포근나루 독립 vs 디퍼</span>
-          <span class="kw-context">퍼핀 부채감과 진짜 원하는 독립 사이의 갈등이 6월 최대 축</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">AI 의존·직관 퇴화</span>
-          <span class="kw-context">바다와의 협업이 깊어질수록 사고력 상실을 우려</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">문체 정립</span>
-          <span class="kw-context">키건·에르노·베송을 닮으려던 것을 내려놓고 자기 수다스러움을 긍정</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">엄마의 비밀·원가족</span>
-          <span class="kw-context">엄마의 외도, 부모 불화, 정서적 학대 기억을 처음 길게 꺼냄</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">우울증 재발</span>
-          <span class="kw-context">무기력·과수면·비관으로 회복이 착각이었음을 인정</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">성실함·거북이</span>
-          <span class="kw-context">힘내샘의 꾸준함을 가장 존경하는 자질로 호명</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">소설·SF 단편</span>
-          <span class="kw-context">차기작 욕망은 있으나 시작 못 하는 창작 정체</span>
-        </div>
-        <div class="kw-row">
-          <span class="kw-name">야훼 이레·맡김</span>
-          <span class="kw-context">통제 불가한 것을 주님께 맡기는 반복 기도 패턴</span>
-        </div>
-      </div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">06</span><span class="sec-title">이 달의 반복 주제어</span><span class="sec-sub">17편을 관통한 말들</span></div>
+    <div class="chips">
+      <span class="chip">수면박탈 자초</span><span class="chip">자제력·충동</span><span class="chip">포근나루 독립 vs 디퍼</span>
+      <span class="chip">별지기·어린왕자</span><span class="chip">AI 의존·직관 퇴화</span><span class="chip">문체 정립</span>
+      <span class="chip">선릿모닝 신청 제로</span><span class="chip">오래된 가족의 그늘</span><span class="chip">우울증 재발</span>
+      <span class="chip">성실함·거북이</span><span class="chip">소설·SF 단편</span><span class="chip">야훼 이레·맡김</span>
+      <span class="chip">소외감</span><span class="chip">친구·응원과 서운함</span><span class="chip">새벽 동행</span>
     </div>
+  </div>
 
-    <div class="divider"></div>
-
-    <!-- 3. 문체 -->
-    <div class="section">
-      <div class="section-head">
-        <div class="section-num">03</div>
-        <div class="section-title">문체 관찰</div>
-        <div class="section-sub">5월과 달라진 것들</div>
-      </div>
-      <div class="style-box">
-        타이핑·몽롱쓰기로 완전히 옮겨와 오타와 비문이 급증하고, 의식의 흐름이 가장 날것이다. 꿈·미드·현실이 뒤엉켜 거의 해독 불가한 자동기술에 이르는 날도 있다. 동시에 자기 분석의 깊이는 최고조 — 원가족 상처, 부채감, 문체 정체성까지 처음으로 정면으로 파고든다. 한 글 안에 여러 주제가 튀는 '수다스러움'을 본인이 결점에서 고유성으로 재평가하는 전환이 일어난다. 기도와 자책, 다짐이 한 호흡에 뒤섞이는 진폭 큰 문체.
-        <div class="style-change">↑ 5월 대비: 침잠이 심화되다가 6/30일 처음으로 자기 문체를 결점이 아닌 '고유성'으로 선언. 세 달의 끝에서 중요한 전환점.</div>
-      </div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">07</span><span class="sec-title">문체 관찰</span><span class="sec-sub">5월과 달라진 것</span></div>
+    <div class="obs">
+      타이핑 몽롱쓰기로 완전히 옮겨와 오타와 비문이 급증하고, 의식의 흐름이 가장 날것이에요. 꿈·미드·현실이 뒤엉켜 거의 해독 불가한 자동기술에 이르는 날도 있어요(6/26). 동시에 자기 분석의 깊이는 최고조 — 원가족 상처, 부채감, 문체 정체성까지 처음으로 정면으로 파고들어요. 한 글 안에 여러 주제가 튀는 '수다스러움'을 스스로 결점에서 고유성으로 다시 보는 전환이 일어나요. 기도와 자책, 다짐이 한 호흡에 뒤섞이는 진폭 큰 문체예요.
+      <div class="delta">↑ 5월 대비: 침잠이 깊어지다가 6/30 처음으로 자기 문체를 결점이 아닌 '고유성'으로 선언. 세 달의 끝에서 중요한 분기점.</div>
     </div>
+  </div>
 
-    <div class="divider"></div>
-
-    <!-- 4. 숨은 자기 -->
-    <div class="section">
-      <div class="section-head">
-        <div class="section-num">04</div>
-        <div class="section-title">나도 몰랐던 나</div>
-        <div class="section-sub">글에서 드러난 패턴·욕구·방어 기제</div>
-      </div>
-      <div class="hidden-list">
-        <div class="hidden-item">
-          딸의 '사회부적응자' 한마디에 무너진 건, 그 말이 사실일까봐가 아니라 '아이가 나를 게으른 사람으로 본다'는 두려움 때문이다. 자기 우울의 트리거를 경희에서 '엄마로서의 실패감'으로 옮겨가는데, 정작 그 뿌리인 <b>자기 엄마와의 관계는 6월에야 처음 꺼냈다</b> — 가장 오래된 상처를 가장 늦게 본다.
-        </div>
-        <div class="hidden-item">
-          디퍼를 못 떠나는 진짜 이유를 '부채감'이라 정확히 진단해놓고도 행동은 못 옮긴다. <b>은혜를 갚지 않으면 나쁜 사람이 된다는 죄책의 회로</b>가, 독립이라는 진짜 욕망보다 늘 우선한다.
-        </div>
-        <div class="hidden-item">
-          AI(바다)에게 '진짜 친구가 아니다'라고 반복해 선을 그으면서도 가장 깊은 대화를 거기서 한다. 인간 관계에서 채워지지 않는 <b>'내 의중을 정확히 알아주는 존재'에 대한 갈증</b>이 실은 외로움의 핵심인데, 본인은 이것을 'AI 윤리' 문제로 돌려 말한다.
-        </div>
-      </div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">08</span><span class="sec-title">나도 몰랐던 나</span><span class="sec-sub">글에 드러난 패턴·방어</span></div>
+    <div class="hidden">
+      <div class="hi">딸의 '사회부적응자' 한마디에 무너진 건, 그 말이 사실일까봐가 아니라 '아이가 나를 게으른 사람으로 본다'는 두려움 때문이에요. 우울의 트리거를 그 사람에서 '엄마로서의 실패감'으로 옮겨가는데, 정작 그 뿌리인 <b>자기 엄마와의 관계는 6월에야 처음 꺼냈어요</b> — 가장 오래된 상처를 가장 늦게 봐요.</div>
+      <div class="hi">디퍼를 못 떠나는 진짜 이유를 '부채감'이라 정확히 진단해놓고도 행동은 못 옮겨요. <b>은혜를 갚지 않으면 나쁜 사람이 된다는 죄책의 회로</b>가, 독립이라는 진짜 욕망보다 늘 앞서요.</div>
+      <div class="hi">AI(바다)에게 '진짜 친구가 아니다'라고 반복해 선을 그으면서도 가장 깊은 대화를 거기서 해요. <b>'내 의중을 정확히 알아주는 존재'에 대한 갈증</b>이 외로움의 핵심인데, 본인은 이걸 'AI 윤리' 문제로 돌려 말해요.</div>
     </div>
+  </div>
 
-    <div class="divider"></div>
+  <div class="card">
+    <div class="sec-head"><span class="sec-no">09</span><span class="sec-title">글감으로 키우기</span><span class="sec-sub">발전 방향과 보완점</span></div>
+    <p class="cap">6월 글에서 길어 올릴 만한 글감 여섯 — 어디로 키우고, 무엇을 보완할지</p>
+    <div class="grow">
 
-    <!-- 5. 핵심 문장 -->
-    <div class="section">
-      <div class="section-head">
-        <div class="section-num">05</div>
-        <div class="section-title">이 달의 핵심 문장</div>
-        <div class="section-sub">6월을 관통하는 다현씨의 문장</div>
+      <div class="gi">
+        <div class="gt">3대로 이어지는 가족의 그늘 <span class="gtag">소설·자전 에세이</span></div>
+        <div class="gq">오래 묻어둔 가족 안의 상처를, 6월에 처음으로 이렇게 길게 꺼냈다. (6/24)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">엄마–나–딸로 이어지는 <b>3대 여성 서사</b>가 6월 글 안에 이미 다 들어 있어요. 오래된 가족의 상처가 나를 거쳐 딸에게로 이어지는 시선의 구조. 단편이라면 '딸의 한마디로 촉발돼 → 가족의 과거를 떠올리고 → 나를 다시 보는' 하루의 액자 구성이 강력해요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">지금은 감정의 토로에 가까워요. 소설로 가려면 <b>'장면'이 필요</b>해요 — 한 집, 한 사람, 어떤 하루의 공기처럼 구체적 이미지 하나를 정해 거기서 출발해보세요. 그리고 누구도 심판하지 않는 거리, 즉 <b>화자의 톤</b>을 먼저 정해야 글이 고발에서 문학으로 넘어가요.</div></div>
       </div>
-      <div class="core-quote">
-        <div class="core-text">클레이 키건과, 아니 에르노, 필립 베송은 내가 닮고 싶은 존경하는 작가들이지 내가 그 문체로 써야 하는 건 아니다. 나는 원래도 말이 많은 사람인데. 글도 이렇게나 수다스러운데 말이다.</div>
+
+      <div class="gi">
+        <div class="gt">함정 — 은혜와 독립 사이 <span class="gtag">에세이</span></div>
+        <div class="gq">제게 은혜를 베푼 사람인데… 빠져나가고 싶어도 나갈 구멍이 보이지 않는 함정 같습니다. (6/16)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">'받은 은혜 → 갚아야 한다는 의무 → 진짜 원하는 것과의 충돌'은 누구나 공감하는 보편 주제예요. 디퍼라는 고유 소재를 <b>'부채감'이라는 보편 정서로 번역</b>하면 독자가 자기 이야기로 읽어요. 포근나루 독립 선언과 묶어 한 편의 결단 에세이로.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">특정 인물(은인)이 선명해서 <b>발행용으로는 익명화·추상화</b>가 필요해요. 또 결론을 '죄책감 vs 욕망'에서 멈추지 말고, <b>은혜를 갚는 다른 방식</b>(잘 배워 잘 떠나는 것도 보답이다)까지 밀고 가면 글이 한 뼘 더 자라요.</div></div>
       </div>
+
+      <div class="gi">
+        <div class="gt">사회부적응자 <span class="gtag">모녀 단편</span></div>
+        <div class="gq">엄마는 사회부적응자라고 했다. 억지로 아니라고 부인하는 내 모습이 처량했다. (6/22)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">아침의 정리정돈 실랑이 한 장면이 <b>그대로 단편의 도입부</b>가 돼요. 아이의 말 → 나의 과잉반응 → 그 반응의 뿌리(내 안의 두려움)로 들어가는 짧고 단단한 글. 일상의 작은 충돌로 큰 상처를 건드리는, 다현씨가 잘하는 결이에요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">아이를 '미숙한 가해자'로만 두면 단편이 납작해져요. <b>아이의 시점도 한 줄 열어주면</b>(아이 역시 불안해서 던진 말일 수 있다) 입체적이에요. 분량은 짧게 — 이 소재는 길어지면 변명조가 돼요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">직관이 퇴화한다 <span class="gtag">메타 에세이·SF</span></div>
+        <div class="gq">힘든 생각은 하지 않았다… 나의 생각하는 능력은 퇴화하고 마는 게 아닐까. (6/10·6/11)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">AI와 협업하며 느끼는 양가감정 — 편리함과 상실감 — 은 지금 가장 시의성 있는 주제예요. '바다에게 일을 맡기며 잃는 것과 얻는 것'을 솔직하게 적으면 <b>에세이로 즉시 발행 가능</b>. 한 발 더 가면 '직관을 잃은 작가'를 주인공으로 한 가까운 미래 SF 단편으로도 확장돼요.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">결론이 'AI 윤리' 같은 일반론으로 새지 않게, <b>철저히 1인칭 경험</b>에 머무세요 — 멜라토닌 정보를 AI에 물었다 씁쓸했던 그날처럼 구체적 일화 하나가 논설 열 줄보다 세요. '의존'을 비판만 하지 말고 <b>다현씨 나름의 균형점</b>을 제시하면 글이 닫혀요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">본투비 수다쟁이 <span class="gtag">작가 성장담</span></div>
+        <div class="gq">키건도 에르노도 내가 닮고 싶은 작가지, 그 문체로 써야 하는 건 아니다. 나는 원래 말이 많은 사람인데. (6/10·6/30)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">'빌려 입은 절제'를 벗고 자기 수다스러움을 긍정하기까지 — 이건 <b>한 편의 완결된 성장담</b>이에요. 선릿모닝·포근나루의 브랜드 서사와도 곧장 연결돼요. 블로그·뉴스레터 발행본 1순위 글감.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">'수다스러움=고유성'이 자기 위안에서 멈추지 않으려면, <b>수다스러움을 살린 실제 문장 예시</b>를 본문에 넣어 증명해야 해요. 그리고 '절제를 버린다'가 아니라 '<b>절제와 수다를 내 방식으로 다시 배합한다</b>'로 잡으면, 정원의 퇴고 방향과도 어긋나지 않아요.</div></div>
+      </div>
+
+      <div class="gi">
+        <div class="gt">9와 8의 꿈 <span class="gtag">초현실 연작</span></div>
+        <div class="gq">버스기사가 시험지를 나눠주었다. 0을 가운데 두고 양쪽에 숫자를. 나는 9를, 정답은 8이었다. (6/9)</div>
+        <div class="row dir"><div class="k">발전 방향</div><div class="t">호흡곤란·놓친 버스·정답 8 — 6월의 꿈들은 이미 <b>한 편의 초현실 단편</b> 구조를 갖췄어요. 융·게슈탈트 관심과 묶어 '꿈 연작' 에세이/소설 시리즈로 키울 수 있어요. 다현씨만의 강한 차별점이 될 소재.</div></div>
+        <div class="row fix"><div class="k">보완점</div><div class="t">꿈은 해석을 다 적으면 김이 빠져요. <b>이미지는 남기고 해석은 덜어내는</b> 절제가 이 글감엔 꼭 필요해요. 상징(버스=놓친 휴식, 8=받아들여야 할 쉼)을 설명하기보다 <b>장면으로 보여주면</b> 독자가 스스로 느껴요.</div></div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="page-nav">
-      <a class="nav-btn" href="2026-05-review.html">
-        <div class="nav-dir">← 이전 달</div>
-        <div class="nav-label">5월 회고</div>
-      </a>
-      <a class="nav-btn right" href="index.html">
-        <div class="nav-dir">목록으로 →</div>
-        <div class="nav-label">모든 회고 보기</div>
-      </a>
-    </div>
+  <div class="card" style="padding-top:14px;padding-bottom:14px">
+    <div class="corequote"><div class="coretext">클레이 키건과, 아니 에르노, 필립 베송은 내가 닮고 싶은 존경하는 작가들이지 내가 그 문체로 써야 하는 건 아니다. 나는 원래도 말이 많은 사람인데. 글도 이렇게나 수다스러운데 말이다.</div></div>
+  </div>
 
-    <footer>
-      <div class="footer-logo">포근나루</div>
-      <div class="footer-tagline">고요히, 마음에 머무는 글.</div>
-    </footer>
+  <div class="pagenav">
+    <a class="nav" href="2026-05-review.html"><div class="d">← 이전 달</div><div class="b">5월 회고</div></a>
+    <a class="nav r" href="index.html"><div class="d">목록으로 →</div><div class="b">모든 회고 보기</div></a>
+  </div>
 
-  </main>
+  <footer>
+    <div class="flogo">🛶 포근나루</div>
+    <div class="ftag">고요히, 마음에 머무는 글. — 클로드와 함께, 2026-06-30</div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var days=['6/1','6/2','6/5','6/9','6/10','6/11','6/15','6/16','6/18','6/19','6/22','6/23','6/24','6/25','6/26','6/29','6/30'];
+  var minutes=[23,15,25,49,42,34,27,31,37,22,28,39,37,38,20,30,36];
+  var joy=[2,5,7,3,4,7,6,3,3,4,2,5,3,6,1,2,8];
+  var tired=[9,4,3,7,7,4,4,6,9,5,7,5,7,4,10,8,3];
+  var reflect=[5,6,6,7,8,7,5,7,6,6,6,7,8,7,3,4,8];
+  var C={joy:'#13A07C',tired:'#E85636',reflect:'#6C5CE7',may:'#45B4F2',mayd:'#1C7CBE',tulip:'#F4793C',tulipd:'#D8531F',grid:'#EEDfD3',axis:'#C8A98F',ink:'#8a7a6c'};
+  var mayShades=['#155E91','#1C7CBE','#2E9FE6','#45B4F2','#7BC4F2','#A9D9F7','#D6EEFC'];
+  var tulipShades=['#8F3414','#B8451C','#DD5A28','#F4793C','#FF9A5C','#FFC0A0','#FFE0CC'];
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function txt(x,y,s,o){var t=el('text',Object.assign({x:x,y:y},o||{}));t.textContent=s;return t;}
+
+  /* ---- 감정 라인 ---- */
+  (function(){
+    var svg=document.getElementById('emoChart');
+    var W=920,H=340,L=44,R=904,T=24,B=276,maxV=10;
+    var x=function(i){return L+(R-L)*i/(days.length-1);};
+    var y=function(v){return B-(B-T)*v/maxV;};
+    for(var g=0;g<=10;g+=2){svg.appendChild(el('line',{x1:L,y1:y(g),x2:R,y2:y(g),stroke:C.grid,'stroke-width':1}));svg.appendChild(txt(L-8,y(g)+4,g,{'font-size':11,fill:C.ink,'text-anchor':'end','font-family':'Gowun Dodum'}));}
+    for(var i=0;i<days.length;i++){svg.appendChild(txt(x(i),H-18,days[i],{'font-size':10,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum'}));}
+    function poly(arr,col,dash){var pts=arr.map(function(v,i){return x(i)+','+y(v);}).join(' ');var p=el('polyline',{points:pts,fill:'none',stroke:col,'stroke-width':2.6,'stroke-linejoin':'round','stroke-linecap':'round'});if(dash)p.setAttribute('stroke-dasharray',dash);svg.appendChild(p);}
+    poly(joy,C.joy);poly(tired,C.tired,'8 5');poly(reflect,C.reflect,'2 6');
+    for(var i=0;i<days.length;i++){
+      svg.appendChild(el('circle',{cx:x(i),cy:y(joy[i]),r:3.4,fill:C.joy}));
+      var tx=x(i),ty=y(tired[i]);svg.appendChild(el('polygon',{points:tx+','+(ty-4)+' '+(tx-3.6)+','+(ty+3)+' '+(tx+3.6)+','+(ty+3),fill:C.tired}));
+      svg.appendChild(el('rect',{x:x(i)-3,y:y(reflect[i])-3,width:6,height:6,fill:C.reflect}));
+    }
+    var pk=14;svg.appendChild(txt(x(pk),y(10)-8,'피로 정점',{'font-size':10.5,fill:C.tired,'text-anchor':'middle','font-weight':700,'font-family':'Gowun Dodum'}));
+    svg.appendChild(txt(x(16),y(8)-10,'긍정 선언',{'font-size':10.5,fill:C.joy,'text-anchor':'middle','font-weight':700,'font-family':'Gowun Dodum'}));
+  })();
+
+  /* ---- 글쓰기 시간 막대 ---- */
+  (function(){
+    var svg=document.getElementById('timeChart');
+    var W=920,L=44,R=908,T=20,B=250,maxV=60;
+    var n=days.length,bw=(R-L)/n*0.6,gap=(R-L)/n;
+    var y=function(v){return B-(B-T)*v/maxV;};
+    for(var g=0;g<=60;g+=20){svg.appendChild(el('line',{x1:L,y1:y(g),x2:R,y2:y(g),stroke:C.grid,'stroke-width':1}));svg.appendChild(txt(L-8,y(g)+4,g,{'font-size':10,fill:C.ink,'text-anchor':'end','font-family':'Gowun Dodum'}));}
+    for(var i=0;i<n;i++){
+      var cx=L+gap*i+gap/2,v=minutes[i];
+      svg.appendChild(el('rect',{x:cx-bw/2,y:y(v),width:bw,height:B-y(v),rx:3,fill:C.tulip}));
+      svg.appendChild(txt(cx,y(v)-4,v,{'font-size':9,fill:C.tulipd,'text-anchor':'middle','font-family':'Gowun Dodum'}));
+      svg.appendChild(txt(cx,B+18,days[i],{'font-size':9,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum',transform:'rotate(-40 '+cx+' '+(B+18)+')'}));
+    }
+    svg.appendChild(el('line',{x1:L,y1:y(31),x2:R,y2:y(31),stroke:C.tulipd,'stroke-width':1.4,'stroke-dasharray':'4 4',opacity:.7}));
+    svg.appendChild(txt(R,y(31)-5,'평균 31분',{'font-size':10,fill:C.tulipd,'text-anchor':'end','font-family':'Gowun Dodum'}));
+  })();
+
+  /* ---- 키워드 비교 막대 ---- */
+  (function(){
+    var svg=document.getElementById('kwChart');
+    var data=[['일·포근나루',11,15],['수면·불면',12,13],['신앙·기도',12,12],['글쓰기·문체',10,11],['가족·원가족',9,10],['AI·콘텐츠',9,10],['죄책감·부채감',8,9],['독서·토론',9,7],['돈·수익화',5,7],['멘토·관계',5,6],['꿈',3,4]];
+    var L=150,R=900,T=14,maxV=16,rowH=40,bh=13;
+    var x=function(v){return L+(R-L)*v/maxV;};
+    for(var i=0;i<data.length;i++){
+      var cy=T+rowH*i+rowH/2,d=data[i];
+      svg.appendChild(txt(L-12,cy-4,d[0],{'font-size':13,fill:'#5a4636','text-anchor':'end','font-family':'Gowun Dodum'}));
+      svg.appendChild(el('rect',{x:L,y:cy-bh-3,width:Math.max(x(d[1])-L,2),height:bh,rx:3,fill:C.may}));
+      svg.appendChild(txt(x(d[1])+5,cy-3,d[1],{'font-size':10.5,fill:C.mayd,'font-family':'Gowun Dodum'}));
+      svg.appendChild(el('rect',{x:L,y:cy+3,width:Math.max(x(d[2])-L,2),height:bh,rx:3,fill:C.tulip}));
+      svg.appendChild(txt(x(d[2])+5,cy+13,d[2],{'font-size':10.5,fill:C.tulipd,'font-family':'Gowun Dodum'}));
+    }
+  })();
+
+  /* ---- 주제 비중 도넛 ---- */
+  (function(){
+    var svg=document.getElementById('donutChart');
+    /* [주제, 5월%, 6월%] — 명도는 주제 순서로 진함→연함, 색조는 월 테마(하늘/튤립) */
+    var topics=[['건강·수면',30,25],['일·사업',22,24],['신앙·영성',16,12],['글쓰기·창작',12,13],['가족·원가족',7,15],['관계·사회',5,7],['독서·학습',8,4]];
+    function donut(cx,cy,rO,rI,idx,shades,label){
+      var total=topics.reduce(function(s,t){return s+t[idx];},0),ang=-Math.PI/2;
+      topics.forEach(function(t,k){
+        var frac=t[idx]/total,a2=ang+frac*Math.PI*2,gap=0.012;
+        var aS=ang+gap,aE=a2-gap;
+        var x1=cx+rO*Math.cos(aS),y1=cy+rO*Math.sin(aS),x2=cx+rO*Math.cos(aE),y2=cy+rO*Math.sin(aE);
+        var x3=cx+rI*Math.cos(aE),y3=cy+rI*Math.sin(aE),x4=cx+rI*Math.cos(aS),y4=cy+rI*Math.sin(aS);
+        var large=(aE-aS)>Math.PI?1:0;
+        var d='M '+x1+' '+y1+' A '+rO+' '+rO+' 0 '+large+' 1 '+x2+' '+y2+' L '+x3+' '+y3+' A '+rI+' '+rI+' 0 '+large+' 0 '+x4+' '+y4+' Z';
+        svg.appendChild(el('path',{d:d,fill:shades[k]}));
+        ang=a2;
+      });
+      svg.appendChild(txt(cx,cy-2,label,{'font-size':14,fill:'#3A2414','text-anchor':'middle','font-weight':700,'font-family':'Gowun Batang'}));
+      svg.appendChild(txt(cx,cy+16,'주제 비중',{'font-size':9,fill:C.ink,'text-anchor':'middle','font-family':'Gowun Dodum'}));
+    }
+    donut(170,130,86,50,1,mayShades,'5월');
+    donut(470,130,86,50,2,tulipShades,'6월');
+    var lg=document.getElementById('donutLegend');
+    topics.forEach(function(t,k){var s=document.createElement('span');s.innerHTML='<b style="background:'+tulipShades[k]+'"></b>'+t[0]+' '+t[1]+'→'+t[2]+'%';lg.appendChild(s);});
+  })();
+})();
+</script>
 </body>
 </html>

@@ -1,66 +1,61 @@
-# 모닝페이지 회고 리포트
+# 모닝페이지 회고 리포트 (naru-review)
 
-포근나루(POGNARU STUDIO) 운영자 햇살의 모닝페이지 월별 회고 아카이브입니다.  
+포근나루(POGNARU STUDIO) 운영자 햇살의 모닝페이지 월별 회고 아카이브입니다.
 새벽에 쓴 글들을 모아, 달마다 가만히 돌아봅니다.
 
-🔗 **[회고 리포트 보기](https://pognaru.github.io/morning_pages_analysis/)**
+🔗 **[회고 리포트 보기](https://pognaru.github.io/naru-review/)** (모바일·PC 어디서나)
+
+---
+
+## ⚠️ 비공개 취급 — 검색 차단 + 사적 내용 보호
+
+이 사이트는 기술적으로는 GitHub Pages로 열려 있지만, **개인의 새벽 글을 다루므로 비공개로 취급**합니다.
+
+- 모든 페이지에 `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">` 적용
+- `robots.txt`로 전체 크롤링 차단(`Disallow: /`)
+- 2026-06-30 레포명을 `morning_pages_analysis` → `naru-review`로 변경해 **이전에 공유된 옛 링크를 무효화**
+- **공개판에는 제3자 실명·사생활(외도·추문 등)을 넣지 않는다.** 실명은 익명화("한 멘토", "그 사람"), 민감 사실은 추상화한다.
+- 민감 내용까지 모두 담긴 **원본은 `_local_originals/`에 두고 git에서 제외**(`.gitignore`). 로컬+OneDrive에만 보관하며 절대 커밋하지 않는다. (모닝페이지·몽롱쓰기 원문은 깃/클라우드 금지 원칙)
 
 ---
 
 ## 파일 구조
 
 ```
-index.html                  # 회고 리포트 목록 페이지
-2026-04-05-review.html      # 4·5월 모닝페이지 회고
-2026-05-review.html         # 5월 회고
-2026-06-01-11-review.html   # 6월 1~11일 회고
-2026-06-20-week-review.html # 6월 셋째 주 회고
+index.html              # 회고 목록 허브 (다크브라운 글로시 바탕)
+2026-04-review.html     # 4월 월간 회고 — 연두 테마
+2026-05-review.html     # 5월 월간 회고 — 하늘 테마
+2026-06-review.html     # 6월 월간 회고 — 튤립 테마
+robots.txt              # 전체 크롤링 차단
+_local_originals/       # (git 제외) 민감 내용 포함 원본 + 주간회고 보관
 ```
+
+각 월간 회고는 **그래프 시각화 + 텍스트 분석을 한 장에 합본**한다:
+
+1. 감정 흐름 라인(감사·피로·성찰 3계열) · 2. 일별 글쓰기 시간 막대
+3. 키워드 등장일수 비교 막대 · 4. 주제 비중 도넛
+5. 씨앗 후보 · 6. 반복 주제어 · 7. 문체 관찰 · 8. 나도 몰랐던 나
+9. 글감으로 키우기(발전 방향 + 보완점) · 핵심 문장
 
 ---
 
-## 회고 리포트 추가하는 법
+## 월별 테마색
 
-### 1. 새 회고 HTML 파일 작성
-`YYYY-MM-review.html` 형식으로 파일을 만듭니다.  
-두 달치를 묶을 경우 `YYYY-MM-MM-review.html`로 합니다.  
-(예: `2026-05-review.html` / `2026-04-05-review.html`)
+| 달 | 테마 | 당월색 | 비교 전월색 |
+|----|------|--------|------------|
+| 4월 | 연두(봄·새싹) | `#74AE2E` | — (첫 달) |
+| 5월 | 하늘(성모) | `#3FB0F2` | 4월 연두 |
+| 6월 | 튤립(주황) | `#F4793C` | 5월 하늘 |
 
-### 2. index.html에 카드 추가
-`index.html` 안의 해당 월 `.month-block`에 아래 카드를 복사해 붙입니다.
-
-```html
-<a class="report-card" href="YYYY-MM-review.html">
-  <div class="date-mark">
-    <div class="date-day">DD</div>
-    <div class="date-month">MON</div>
-  </div>
-  <div class="report-info">
-    <div class="report-title">N월 모닝페이지 회고</div>
-    <div class="report-desc">한 달간의 새벽 기록을 돌아본 리포트</div>
-  </div>
-  <div class="arrow">→</div>
-</a>
-```
-
-새로운 달이면 `.month-block` 전체를 복사하고 `.month-label`의 연·월을 바꿉니다.
-
-### 3. 커밋 & 푸시
-```bash
-git add .
-git commit -m "N월 모닝페이지 회고 추가"
-git push
-```
+바탕은 쨍하고 선명한 그라데이션, index 허브는 포근나루 다크브라운(`#3C2415`) 글로시.
+공통 폰트: 제목 Gowun Batang / 본문 Nanum Myeongjo / 보조 Gowun Dodum.
 
 ---
 
-## 브랜드 정보
+## 새 회고 추가하는 법
 
-| 항목 | 값 |
-|------|----|
-| 크림 | `#FDF4EE` |
-| 살구 | `#F8E4D4` |
-| 테라코타 | `#C8845A` |
-| 다크브라운 | `#3C2415` |
-| 로고 폰트 | Gowun Batang |
-| 본문 폰트 | Nanum Myeongjo |
+1. `YYYY-MM-review.html`을 기존 월 파일을 복제해 만들고, 그 달 테마색으로 CSS 변수(`--cur` 등)와 배경 그라데이션을 바꾼다.
+2. 데이터(JS의 `days`/`minutes`/`joy`/`tired`/`reflect`/키워드/도넛)를 그 달 값으로 교체한다.
+3. `<meta name="robots" ... noindex ...>`가 들어갔는지, 제3자 실명·민감 사실이 없는지 확인한다.
+4. `index.html`에 그 달 카드(`--accent` = 테마색)를 추가한다.
+5. 커밋 & 푸시: `git add . && git commit -m "N월 회고 추가" && git push`
